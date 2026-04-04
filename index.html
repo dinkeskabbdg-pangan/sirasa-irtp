@@ -239,62 +239,56 @@ regulasiData.forEach(r => {
   </a>`;
 });
 
-// ---- FORM ----
-  document.getElementById('form-toast').classList.remove('hidden');
-  setTimeout(() => { this.reset(); }, 300);
-  lucide.createIcons();
-});
-function hideToast() { document.getElementById('form-toast').classList.add('hidden'); }
-
 // ---- CHART ----
 async function initChart() {
   const res = await fetch("https://opensheet.elk.sh/1DgBTzvUkEH2Vjbw1VCODnUzwHN0E_S0yaqTkDnfb5YI/SaranaIRTP");
   const data = await res.json();
 
   const labels = data.map(d => d["Tahun"]);
-const diawasi = data.map(d => Number(d["Diawasi"]));
-const jumlah = data.map(d => Number(d["Jumlah"]));
+  const diawasi = data.map(d => Number(d["Diawasi"]));
+  const jumlah = data.map(d => Number(d["Jumlah"]));
 
   const ctx = document.getElementById('yearlyChart').getContext('2d');
 
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: labels,
-    datasets: [
-      {
-        label: 'Sarana yang Telah dilakukan Pengawasan Pemenuhan Komitmen SPPIRT',
-        data: diawasi,
-        backgroundColor: '#16a34a'
-      },
-      {
-        label: 'Jumlah Sarana IRTP',
-        data: jumlah,
-        backgroundColor: '#dc2626'
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      datalabels: {
-        anchor: 'end',
-        align: 'top',
-        color: '#000',
-        font: {
-          weight: 'bold'
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Sarana yang Telah dilakukan Pengawasan Pemenuhan Komitmen SPPIRT',
+          data: diawasi,
+          backgroundColor: '#16a34a'
         },
-        formatter: function(value) {
-          return value;
+        {
+          label: 'Jumlah Sarana IRTP',
+          data: jumlah,
+          backgroundColor: '#dc2626'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        datalabels: {
+          anchor: 'end',
+          align: 'top',
+          color: '#000',
+          font: {
+            weight: 'bold'
+          },
+          formatter: function(value) {
+            return value;
+          }
         }
       }
-    }
-  },
-  plugins: [ChartDataLabels]
-});
- 
-initChart();
+    },
+    plugins: [ChartDataLabels]
+  });
+}
+
+window.addEventListener('DOMContentLoaded', initChart);
    
 // ---- ELEMENT SDK ----
 const defaultConfig = {
