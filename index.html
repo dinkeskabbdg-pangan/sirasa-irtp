@@ -133,32 +133,15 @@ html, body { height: 100%; margin: 0; }
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
      <h2 class="text-lg font-800 text-slate-800 mb-1">Form Input Hasil Pemeriksaan IRTP</h2>
      <p class="text-xs text-slate-400 mb-6">Masukkan data hasil pengawasan lapangan</p>
-     <form id="irtp-form" class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 space-y-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-       <div><label for="f-nama" class="block text-xs font-600 text-slate-600 mb-1">Nama IRTP</label> <input id="f-nama" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Nama usaha IRTP">
-       </div>
-       <div><label for="f-pemilik" class="block text-xs font-600 text-slate-600 mb-1">Nama Pemilik</label> <input id="f-pemilik" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Nama pemilik">
-       </div>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-       <div><label for="f-puskesmas" class="block text-xs font-600 text-slate-600 mb-1">Puskesmas</label> <select id="f-puskesmas" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"> <option value="">Pilih Puskesmas</option> <option>Puskesmas Kota A</option> <option>Puskesmas Kota B</option> <option>Puskesmas Kecamatan C</option> <option>Puskesmas Kecamatan D</option> <option>Puskesmas Kecamatan E</option> </select>
-       </div>
-       <div><label for="f-tanggal" class="block text-xs font-600 text-slate-600 mb-1">Tanggal Pemeriksaan</label> <input id="f-tanggal" type="date" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-       </div>
-      </div>
-      <div><label for="f-alamat" class="block text-xs font-600 text-slate-600 mb-1">Alamat IRTP</label> <input id="f-alamat" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Alamat lengkap">
-      </div>
-      <div><label for="f-produk" class="block text-xs font-600 text-slate-600 mb-1">Jenis Produk</label> <input id="f-produk" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Keripik, Kue Kering, dll">
-      </div>
-      <div><label class="block text-xs font-600 text-slate-600 mb-1">Hasil Pemeriksaan</label>
-       <div class="flex gap-4"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="hasil" value="memenuhi" class="accent-emerald-600"> <span class="text-sm text-slate-700">Memenuhi Ketentuan</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="hasil" value="tidak" class="accent-red-600"> <span class="text-sm text-slate-700">Tidak Memenuhi</span> </label>
-       </div>
-      </div>
-      <div><label for="f-catatan" class="block text-xs font-600 text-slate-600 mb-1">Catatan Pemeriksaan</label> <textarea id="f-catatan" rows="3" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Catatan tambahan..."></textarea>
-      </div>
-      <div class="flex gap-3 pt-2"><button type="submit" class="bg-blue-700 hover:bg-blue-800 text-white font-600 text-sm px-6 py-2.5 rounded-lg transition flex items-center gap-2"><i data-lucide="save" style="width:16px;height:16px;"></i> Simpan Data</button> <button type="button" onclick="document.getElementById('irtp-form').reset(); hideToast();" class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-600 text-sm px-6 py-2.5 rounded-lg transition">Reset</button>
-      </div>
-     </form><!-- Toast -->
+     <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-4">
+  <iframe 
+    src="https://docs.google.com/forms/d/e/1FAIpQLSfbXW3efxzgq7yktXZceydUggHAdq_5LvvBx73bXIj4UOGYhQ/viewform?embedded=true" 
+    width="100%" 
+    height="1200" 
+    frameborder="0">
+  </iframe>
+</div>
+     <!-- Toast -->
      <div id="form-toast" class="hidden mt-4 bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-500 px-4 py-3 rounded-lg flex items-center gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> <span>Data berhasil disimpan! (Demo)</span>
      </div>
     </div>
@@ -257,8 +240,6 @@ regulasiData.forEach(r => {
 });
 
 // ---- FORM ----
-document.getElementById('irtp-form').addEventListener('submit', function(e) {
-  e.preventDefault();
   document.getElementById('form-toast').classList.remove('hidden');
   setTimeout(() => { this.reset(); }, 300);
   lucide.createIcons();
