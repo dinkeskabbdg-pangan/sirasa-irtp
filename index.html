@@ -101,7 +101,7 @@ html, body { height: 100%; margin: 0; }
       </div>
      </div><!-- Chart -->
      <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5 mb-6">
-      <h2 class="text-base font-700 text-slate-800 mb-1">Grafik Pengawasan IRTP Per Tahun</h2>
+      <h2 class="text-base font-700 text-slate-800 mb-1">Tren Capaian Hasil Pengawasan IRTP</h2>
       <p class="text-xs text-slate-400 mb-4">Perbandingan IRTP yang memenuhi dan tidak memenuhi ketentuan</p>
       <div style="position:relative; height:300px;">
        <canvas id="yearlyChart"></canvas>
@@ -266,28 +266,43 @@ document.getElementById('irtp-form').addEventListener('submit', function(e) {
 function hideToast() { document.getElementById('form-toast').classList.add('hidden'); }
 
 // ---- CHART ----
-function initChart() {
+<script>
+async function initChart() {
+  const res = await fetch("https://opensheet.elk.sh/2PACX-1vTHdQnQotKGqZX5mxoRcFqZxjk-LlCV5Mov1No-qdXDs8x0pD7QR53z41eipKh6aClxtDqZAyt1NorK/Sarana%20IRTP");
+  const data = await res.json();
+
+  const labels = data.map(d => d.Tahun);
+  const diawasi = data.map(d => Number(d.Diawasi));
+  const jumlah = data.map(d => Number(d.Jumlah));
+
   const ctx = document.getElementById('yearlyChart').getContext('2d');
+
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+      labels: labels,
       datasets: [
-        { label: 'Memenuhi Ketentuan', data: [120, 135, 98, 155, 190, 236], backgroundColor: '#059669', borderRadius: 6, barPercentage: 0.7 },
-        { label: 'Tidak Memenuhi', data: [45, 52, 68, 40, 55, 53], backgroundColor: '#dc2626', borderRadius: 6, barPercentage: 0.7 }
+        {
+          label: 'Sarana yang Telah dilakukan Pengawasan Pemenuhan Komitmen SPPIRT',
+          data: diawasi,
+          backgroundColor: '#16a34a'
+        },
+        {
+          label: 'Jumlah Sarana IRTP',
+          data: jumlah,
+          backgroundColor: '#dc2626'
+        }
       ]
     },
     options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'rectRounded', font: { size: 12, family: 'Plus Jakarta Sans', weight: '600' } } } },
-      scales: {
-        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { font: { size: 11, family: 'Plus Jakarta Sans' } } },
-        x: { grid: { display: false }, ticks: { font: { size: 12, family: 'Plus Jakarta Sans', weight: '600' } } }
-      }
+      responsive: true,
+      maintainAspectRatio: false
     }
   });
 }
+
 initChart();
+</script>
 
 // ---- ELEMENT SDK ----
 const defaultConfig = {
