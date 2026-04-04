@@ -217,7 +217,7 @@ const kecamatanData = [
  {
   kecamatan: "Arjasari",
   puskesmas: ["Arjasari", "Nambo"],
-  url: url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTTpGqGwNV6h2HlS41bXeTRLa-8M4loCbSFqdYysUM8KUMmMgi-a2X1zQdfg2QSldHIq2rEx2B9xCKN/pubhtml?gid=1817295404&single=true&widget=true&headers=false"
+  url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTTpGqGwNV6h2HlS41bXeTRLa-8M4loCbSFqdYysUM8KUMmMgi-a2X1zQdfg2QSldHIq2rEx2B9xCKN/pubhtml?gid=1817295404&single=true&widget=true&headers=false"
 }, 
  {
     kecamatan: "Dayeuhkolot",
@@ -351,27 +351,31 @@ const kecamatanData = [
   }
 ];
    
-const tbody = document.getElementById('kecamatan-table');
+document.addEventListener('DOMContentLoaded', () => {
 
-kecamatanData.forEach((kec, i) => {
-  const listPuskesmas = kec.puskesmas
-    .map(p => `<div>• ${p}</div>`)
-    .join('');
+  const tbody = document.getElementById('kecamatan-table');
 
-  tbody.innerHTML += `
-    <tr class="border-b border-slate-100 hover:bg-blue-50/50 transition">
-      <td class="px-4 py-3 text-slate-500">${i + 1}</td>
-      <td class="px-4 py-3 font-600 text-slate-800">${kec.kecamatan}</td>
-      <td class="px-4 py-3 text-slate-600">${listPuskesmas}</td>
-      <td class="text-center px-4 py-3">
-        <a href="${kec.url}" target="_blank"
-          class="inline-flex items-center gap-1 text-xs font-600 text-blue-700 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition">
-          <i data-lucide="external-link" style="width:12px;height:12px;"></i>
-          Spreadsheet
-        </a>
-      </td>
-    </tr>
-  `;
+  kecamatanData.forEach((kec, i) => {
+    const listPuskesmas = kec.puskesmas
+      .map(p => `<div>• ${p}</div>`)
+      .join('');
+
+    tbody.innerHTML += `
+      <tr class="border-b border-slate-100 hover:bg-blue-50/50 transition">
+        <td class="px-4 py-3 text-slate-500">${i + 1}</td>
+        <td class="px-4 py-3 font-600 text-slate-800">${kec.kecamatan}</td>
+        <td class="px-4 py-3 text-slate-600">${listPuskesmas}</td>
+        <td class="text-center px-4 py-3">
+          <a href="${kec.url}" target="_blank"
+            class="inline-flex items-center gap-1 text-xs font-600 text-blue-700 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition">
+            <i data-lucide="external-link" style="width:12px;height:12px;"></i>
+            Spreadsheet
+          </a>
+        </td>
+      </tr>
+    `;
+  });
+
 });
 
 // ---- REGULASI DATA ----
