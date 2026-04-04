@@ -271,9 +271,9 @@ async function initChart() {
   const res = await fetch("https://opensheet.elk.sh/2PACX-1vTHdQnQotKGqZX5mxoRcFqZxjk-LlCV5Mov1No-qdXDs8x0pD7QR53z41eipKh6aClxtDqZAyt1NorK/Sarana%20IRTP");
   const data = await res.json();
 
-  const labels = data.map(d => d.Tahun);
-  const diawasi = data.map(d => Number(d.Diawasi));
-  const jumlah = data.map(d => Number(d.Jumlah));
+  const labels = data.map(d => d["Tahun"]);
+const diawasi = data.map(d => Number(d["Diawasi"]));
+const jumlah = data.map(d => Number(d["Jumlah"]));
 
   const ctx = document.getElementById('yearlyChart').getContext('2d');
 
