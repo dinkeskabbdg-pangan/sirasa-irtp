@@ -32,8 +32,8 @@ html, body { height: 100%; margin: 0; }
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
- <body class="h-full bg-slate-50">
-  <div id="app" class="h-full w-full overflow-auto"><!-- HEADER -->
+ <body class="bg-slate-50">
+  <div id="app" class="w-full overflow-auto"><!-- HEADER -->
    <header id="site-header" class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 text-white shadow-lg">
     <div class="max-w-7xl mx-auto px-4 py-5 sm:px-6 lg:px-8">
      <div class="flex items-center gap-4">
@@ -150,7 +150,7 @@ html, body { height: 100%; margin: 0; }
       <iframe 
         src="https://docs.google.com/forms/d/e/1FAIpQLSfbXW3efxzgq7yktXZceydUggHAdq_5LvvBx73bXIj4UOGYhQ/viewform?embedded=true" 
         width="100%" 
-        height="1200" 
+        height="700" 
         frameborder="0">
       </iframe>
 
@@ -175,16 +175,14 @@ html, body { height: 100%; margin: 0; }
      <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
       <table class="w-full text-sm">
        <thead class="bg-blue-800 text-white">
-        <tr>
-         <th class="text-left px-4 py-3 font-600 text-xs">No</th>
-         <th class="text-left px-4 py-3 font-600 text-xs">Kecamatan</th>
-         <th class="text-center px-4 py-3 font-600 text-xs">Total IRTP</th>
-         <th class="text-center px-4 py-3 font-600 text-xs">Memenuhi</th>
-         <th class="text-center px-4 py-3 font-600 text-xs">Tidak</th>
-         <th class="text-center px-4 py-3 font-600 text-xs">Aksi</th>
-        </tr>
-       </thead>
-       <tbody id="puskesmas-table"></tbody>
+  <tr>
+    <th class="text-left px-4 py-3 font-600 text-xs">No</th>
+    <th class="text-left px-4 py-3 font-600 text-xs">Kecamatan</th>
+    <th class="text-left px-4 py-3 font-600 text-xs">Puskesmas</th>
+    <th class="text-center px-4 py-3 font-600 text-xs">Aksi</th>
+  </tr>
+</thead>
+<tbody id="kecamatan-table"></tbody>
       </table>
      </div>
      <p class="text-xs text-slate-400 mt-3 italic"><i data-lucide="info" style="width:12px;height:12px;display:inline;"></i> Link spreadsheet bersifat contoh. Ganti dengan URL spreadsheet yang sesuai.</p>
@@ -215,25 +213,161 @@ function navigateTo(page) {
   lucide.createIcons();
 }
 
-// ---- PUSKESMAS DATA ----
-const puskesmasData = [
-  { nama: 'Puskesmas Kota A', total: 142, memenuhi: 110, tidak: 32, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_1' },
-  { nama: 'Puskesmas Kota B', total: 98, memenuhi: 78, tidak: 20, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_2' },
-  { nama: 'Puskesmas Kecamatan C', total: 87, memenuhi: 65, tidak: 22, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_3' },
-  { nama: 'Puskesmas Kecamatan D', total: 76, memenuhi: 60, tidak: 16, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_4' },
-  { nama: 'Puskesmas Kecamatan E', total: 65, memenuhi: 48, tidak: 17, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_5' },
-  { nama: 'Puskesmas Kecamatan F', total: 54, memenuhi: 41, tidak: 13, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_6' },
+// ---- KECAMATAN DATA ----
+const kecamatanData = [
+  {
+    kecamatan: "Dayeuhkolot",
+    puskesmas: ["Dayeuh Kolot", "Cangkuang"],
+    url: "#"
+  },
+  {
+    kecamatan: "Cangkuang",
+    puskesmas: ["Nagrak"],
+    url: "#"
+  },
+  {
+    kecamatan: "Baleendah",
+    puskesmas: ["Baleendah", "Rancamanyar"],
+    url: "#"
+  },
+  {
+    kecamatan: "Banjaran",
+    puskesmas: ["Banjaran Kota", "Kiangroke"],
+    url: "#"
+  },
+  {
+    kecamatan: "Margahayu",
+    puskesmas: ["Bihbul", "Margahayu Selatan"],
+    url: "#"
+  },
+  {
+    kecamatan: "Cileunyi",
+    puskesmas: ["Cibiru Hilir", "Cinunuk", "Cileunyi"],
+    url: "#"
+  },
+  {
+    kecamatan: "Cicalengka",
+    puskesmas: ["Cicalengka DTP", "Sawahlega"],
+    url: "#"
+  },
+  {
+    kecamatan: "Cimaung",
+    puskesmas: ["Cikalong", "Cimaung"],
+    url: "#"
+  },
+  {
+    kecamatan: "Cikancung",
+    puskesmas: ["Cikancung", "Ciluluk"],
+    url: "#"
+  },
+  {
+    kecamatan: "Majalaya",
+    puskesmas: ["Cikaro", "Majalaya", "Wangisagara"],
+    url: "#"
+  },
+  {
+    kecamatan: "Ciparay",
+    puskesmas: ["Ciparay DTP", "Pakutandang", "Sumbersari"],
+    url: "#"
+  },
+  {
+    kecamatan: "Paseh",
+    puskesmas: ["Cipedes", "Paseh"],
+    url: "#"
+  },
+  {
+    kecamatan: "Ciwidey",
+    puskesmas: ["Ciwidey", "Rawabogo"],
+    url: "#"
+  },
+  {
+    kecamatan: "Ibun",
+    puskesmas: ["Ibun", "Sudi"],
+    url: "#"
+  },
+  {
+    kecamatan: "Katapang",
+    puskesmas: ["Katapang", "Sangkan Hurip"],
+    url: "#"
+  },
+  {
+    kecamatan: "Kertasari",
+    puskesmas: ["Kertasari", "Santosa"],
+    url: "#"
+  },
+  {
+    kecamatan: "Kutawaringin",
+    puskesmas: ["Kopo", "Kutawaringin"],
+    url: "#"
+  },
+  {
+    kecamatan: "Rancaekek",
+    puskesmas: ["Linggar", "Nanjungmekar", "Rancaekek DTP"],
+    url: "#"
+  },
+  {
+    kecamatan: "Margaasih",
+    puskesmas: ["Margaasih", "Rahayu"],
+    url: "#"
+  },
+  {
+    kecamatan: "Nagreg",
+    puskesmas: ["Nagreg"],
+    url: "#"
+  },
+  {
+    kecamatan: "Pacet",
+    puskesmas: ["Pacet", "Panca"],
+    url: "#"
+  },
+  {
+    kecamatan: "Pangalengan",
+    puskesmas: ["Pangalengan DTP", "Sukamanah", "Warnasari"],
+    url: "#"
+  },
+  {
+    kecamatan: "Pasirjambu",
+    puskesmas: ["Pasirjambu", "Sugihmukti"],
+    url: "#"
+  },
+  {
+    kecamatan: "Rancabali",
+    puskesmas: ["Rancabali"],
+    url: "#"
+  },
+  {
+    kecamatan: "Soreang",
+    puskesmas: ["Soreang", "Sukajadi"],
+    url: "#"
+  },
+  {
+    kecamatan: "Solokanjeruk",
+    puskesmas: ["Padamukti", "Solokan Jeruk"],
+    url: "#"
+  }
 ];
-const tbody = document.getElementById('puskesmas-table');
-puskesmasData.forEach((p, i) => {
-  tbody.innerHTML += `<tr class="border-b border-slate-100 hover:bg-blue-50/50 transition">
-    <td class="px-4 py-3 text-slate-500">${i+1}</td>
-    <td class="px-4 py-3 font-600 text-slate-800">${p.nama}</td>
-    <td class="text-center px-4 py-3">${p.total}</td>
-    <td class="text-center px-4 py-3 text-emerald-700 font-600">${p.memenuhi}</td>
-    <td class="text-center px-4 py-3 text-red-600 font-600">${p.tidak}</td>
-    <td class="text-center px-4 py-3"><a href="${p.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-600 text-blue-700 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition"><i data-lucide="external-link" style="width:12px;height:12px;"></i> Spreadsheet</a></td>
-  </tr>`;
+   
+const tbody = document.getElementById('kecamatan-table');
+
+kecamatanData.forEach((kec, i) => {
+  const listPuskesmas = kec.puskesmas
+    .map(p => `<div>• ${p}</div>`)
+    .join('');
+
+  tbody.innerHTML += `
+    <tr class="border-b border-slate-100 hover:bg-blue-50/50 transition">
+      <td class="px-4 py-3 text-slate-500">${i + 1}</td>
+      <td class="px-4 py-3 font-600 text-slate-800">${kec.kecamatan}</td>
+      <td class="px-4 py-3 text-slate-600">${listPuskesmas}</td>
+      <td class="text-center px-4 py-3">
+        <a href="${kec.url}" target="_blank"
+          class="inline-flex items-center gap-1 text-xs font-600 text-blue-700 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition">
+          <i data-lucide="external-link" style="width:12px;height:12px;"></i>
+          Spreadsheet
+        </a>
+      </td>
+    </tr>
+  `;
 });
 
 // ---- REGULASI DATA ----
