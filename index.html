@@ -9,6 +9,7 @@
   <script src="/_sdk/element_sdk.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
   <script>
 tailwind.config = {
   theme: {
@@ -275,30 +276,43 @@ const jumlah = data.map(d => Number(d["Jumlah"]));
 
   const ctx = document.getElementById('yearlyChart').getContext('2d');
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Sarana yang Telah dilakukan Pengawasan Pemenuhan Komitmen SPPIRT',
-          data: diawasi,
-          backgroundColor: '#16a34a'
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Sarana yang Telah dilakukan Pengawasan Pemenuhan Komitmen SPPIRT',
+        data: diawasi,
+        backgroundColor: '#16a34a'
+      },
+      {
+        label: 'Jumlah Sarana IRTP',
+        data: jumlah,
+        backgroundColor: '#dc2626'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'top',
+        color: '#000',
+        font: {
+          weight: 'bold'
         },
-        {
-          label: 'Jumlah Sarana IRTP',
-          data: jumlah,
-          backgroundColor: '#dc2626'
+        formatter: function(value) {
+          return value;
         }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false
+      }
     }
-  });
-}
-
+  },
+  plugins: [ChartDataLabels]
+});
+ 
 initChart();
    
 // ---- ELEMENT SDK ----
