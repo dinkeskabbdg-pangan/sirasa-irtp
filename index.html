@@ -1,360 +1,344 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.3">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
-</head>
-<body>
-<p class="p1">&lt;!doctype html&gt;</p>
-<p class="p1">&lt;html lang="id" class="h-full"&gt;</p>
-<p class="p1"><span class="Apple-converted-space"> </span>&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;SIRASA IRTP&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.tailwindcss.com/3.4.17"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="/_sdk/element_sdk.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;amp;display=swap" rel="stylesheet"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1">tailwind.config = {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>theme: {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>extend: {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>fontFamily: { body: ['Plus Jakarta Sans', 'sans-serif'] }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1">}</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1">html, body { height: 100%; margin: 0; }</p>
-<p class="p1">* { font-family: 'Plus Jakarta Sans', sans-serif; }</p>
-<p class="p1">.page { display: none; }</p>
-<p class="p1">.page.active { display: block; }</p>
-<p class="p1">.fade-in { animation: fadeIn 0.4s ease; }</p>
-<p class="p1">@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }</p>
-<p class="p1">.card-hover { transition: all 0.25s ease; }</p>
-<p class="p1">.card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,50,120,0.12); }</p>
-<p class="p1">&lt;/style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;body { box-sizing: border-box; }&lt;/style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="/_sdk/data_sdk.js" type="text/javascript"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space"> </span>&lt;/head&gt;</p>
-<p class="p1"><span class="Apple-converted-space"> </span>&lt;body class="h-full bg-slate-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="app" class="h-full w-full overflow-auto"&gt;&lt;!-- HEADER --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;header id="site-header" class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 text-white shadow-lg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="max-w-7xl mx-auto px-4 py-5 sm:px-6 lg:px-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;div class="flex items-center gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="flex-shrink-0 w-14 h-14 bg-white/15 rounded-xl flex items-center justify-center backdrop-blur"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;svg width="32" height="32" viewbox="0 0 32 32" fill="none"&gt;&lt;rect x="4" y="6" width="24" height="20" rx="3" stroke="white" stroke-width="2" /&gt; &lt;path d="M4 12h24" stroke="white" stroke-width="2" /&gt; &lt;circle cx="16" cy="20" r="3" stroke="white" stroke-width="2" /&gt; &lt;path d="M13 20l3-3 3 3" stroke="white" stroke-width="1.5" fill="none" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;h1 id="main-title" class="text-lg sm:text-xl font-800 tracking-tight leading-tight"&gt;SIRASA IRTP&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;p class="text-xs sm:text-sm font-600 text-blue-200 mt-0.5"&gt;Sistem Monitoring Pengawasan IRTP&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;p id="subtitle-text" class="text-xs text-blue-300 mt-0.5 max-w-2xl"&gt;Platform digital untuk monitoring dan evaluasi hasil pengawasan Industri Rumah Tangga Pangan (IRTP) di wilayah kerja Dinas Kesehatan&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;/header&gt;&lt;!-- NAV for sub-pages --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;nav id="sub-nav" class="bg-white border-b border-slate-200 shadow-sm hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"&gt;&lt;button onclick="navigateTo('dashboard')" class="inline-flex items-center gap-2 py-3 text-sm font-600 text-blue-700 hover:text-blue-900 transition"&gt; &lt;i data-lucide="arrow-left" style="width:16px;height:16px;"&gt;&lt;/i&gt; Kembali ke Dashboard &lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;/nav&gt;&lt;!-- PAGE: DASHBOARD --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;div id="page-dashboard" class="page active fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6"&gt;&lt;!-- Stats Cards --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 card-hover"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div class="flex items-center gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;i data-lucide="building-2" style="width:20px;height:20px;color:#1e40af;"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;p class="text-xs text-slate-500 font-500"&gt;Total IRTP&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;p class="text-xl font-800 text-slate-800"&gt;1.247&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 card-hover"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div class="flex items-center gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;i data-lucide="check-circle" style="width:20px;height:20px;color:#047857;"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;p class="text-xs text-slate-500 font-500"&gt;Memenuhi&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;p class="text-xl font-800 text-emerald-700"&gt;934&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 card-hover"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div class="flex items-center gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;i data-lucide="x-circle" style="width:20px;height:20px;color:#b91c1c;"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;p class="text-xs text-slate-500 font-500"&gt;Tidak Memenuhi&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;p class="text-xl font-800 text-red-700"&gt;313&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 card-hover"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div class="flex items-center gap-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;i data-lucide="clock" style="width:20px;height:20px;color:#b45309;"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;p class="text-xs text-slate-500 font-500"&gt;Puskesmas&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;p class="text-xl font-800 text-slate-800"&gt;18&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;/div&gt;&lt;!-- Chart --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5 mb-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="text-base font-700 text-slate-800 mb-1"&gt;Grafik Pengawasan IRTP Per Tahun&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="text-xs text-slate-400 mb-4"&gt;Perbandingan IRTP yang memenuhi dan tidak memenuhi ketentuan&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="position:relative; height:300px;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;canvas id="yearlyChart"&gt;&lt;/canvas&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;/div&gt;&lt;!-- Action Buttons --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"&gt;&lt;button onclick="navigateTo('form')" class="card-hover bg-gradient-to-br from-blue-700 to-blue-800 text-white rounded-xl p-5 text-left shadow-md hover:shadow-lg transition group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div class="w-11 h-11 bg-white/15 rounded-lg flex items-center justify-center mb-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;i data-lucide="clipboard-edit" style="width:22px;height:22px;"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;&lt;p class="font-700 text-sm"&gt;Form Input Hasil Pemeriksaan&lt;/p&gt;&lt;p class="text-xs text-blue-200 mt-1"&gt;Input data hasil pengawasan IRTP&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div class="mt-3 flex items-center gap-1 text-xs text-blue-200 group-hover:text-white transition"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;Buka Form&lt;/span&gt;&lt;i data-lucide="arrow-right" style="width:14px;height:14px;"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;&lt;/button&gt; &lt;button onclick="navigateTo('data')" class="card-hover bg-gradient-to-br from-emerald-600 to-emerald-700 text-white rounded-xl p-5 text-left shadow-md hover:shadow-lg transition group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div class="w-11 h-11 bg-white/15 rounded-lg flex items-center justify-center mb-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;i data-lucide="database" style="width:22px;height:22px;"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;&lt;p class="font-700 text-sm"&gt;Data Pengawasan&lt;/p&gt;&lt;p class="text-xs text-emerald-200 mt-1"&gt;Lihat data per Puskesmas&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div class="mt-3 flex items-center gap-1 text-xs text-emerald-200 group-hover:text-white transition"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;Lihat Data&lt;/span&gt;&lt;i data-lucide="arrow-right" style="width:14px;height:14px;"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;&lt;/button&gt; &lt;button onclick="navigateTo('regulasi')" class="card-hover bg-gradient-to-br from-amber-600 to-amber-700 text-white rounded-xl p-5 text-left shadow-md hover:shadow-lg transition group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div class="w-11 h-11 bg-white/15 rounded-lg flex items-center justify-center mb-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;i data-lucide="book-open" style="width:22px;height:22px;"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;&lt;p class="font-700 text-sm"&gt;Regulasi IRTP&lt;/p&gt;&lt;p class="text-xs text-amber-200 mt-1"&gt;Kumpulan peraturan &amp;amp; pedoman&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div class="mt-3 flex items-center gap-1 text-xs text-amber-200 group-hover:text-white transition"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;Lihat Regulasi&lt;/span&gt;&lt;i data-lucide="arrow-right" style="width:14px;height:14px;"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;/div&gt;&lt;!-- PAGE: FORM INPUT --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;div id="page-form" class="page fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;h2 class="text-lg font-800 text-slate-800 mb-1"&gt;Form Input Hasil Pemeriksaan IRTP&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;p class="text-xs text-slate-400 mb-6"&gt;Masukkan data hasil pengawasan lapangan&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;form id="irtp-form" class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 space-y-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="grid grid-cols-1 sm:grid-cols-2 gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div&gt;&lt;label for="f-nama" class="block text-xs font-600 text-slate-600 mb-1"&gt;Nama IRTP&lt;/label&gt; &lt;input id="f-nama" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Nama usaha IRTP"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div&gt;&lt;label for="f-pemilik" class="block text-xs font-600 text-slate-600 mb-1"&gt;Nama Pemilik&lt;/label&gt; &lt;input id="f-pemilik" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Nama pemilik"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="grid grid-cols-1 sm:grid-cols-2 gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div&gt;&lt;label for="f-puskesmas" class="block text-xs font-600 text-slate-600 mb-1"&gt;Puskesmas&lt;/label&gt; &lt;select id="f-puskesmas" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"&gt; &lt;option value=""&gt;Pilih Puskesmas&lt;/option&gt; &lt;option&gt;Puskesmas Kota A&lt;/option&gt; &lt;option&gt;Puskesmas Kota B&lt;/option&gt; &lt;option&gt;Puskesmas Kecamatan C&lt;/option&gt; &lt;option&gt;Puskesmas Kecamatan D&lt;/option&gt; &lt;option&gt;Puskesmas Kecamatan E&lt;/option&gt; &lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div&gt;&lt;label for="f-tanggal" class="block text-xs font-600 text-slate-600 mb-1"&gt;Tanggal Pemeriksaan&lt;/label&gt; &lt;input id="f-tanggal" type="date" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;label for="f-alamat" class="block text-xs font-600 text-slate-600 mb-1"&gt;Alamat IRTP&lt;/label&gt; &lt;input id="f-alamat" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Alamat lengkap"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;label for="f-produk" class="block text-xs font-600 text-slate-600 mb-1"&gt;Jenis Produk&lt;/label&gt; &lt;input id="f-produk" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Keripik, Kue Kering, dll"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;label class="block text-xs font-600 text-slate-600 mb-1"&gt;Hasil Pemeriksaan&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;div class="flex gap-4"&gt;&lt;label class="flex items-center gap-2 cursor-pointer"&gt; &lt;input type="radio" name="hasil" value="memenuhi" class="accent-emerald-600"&gt; &lt;span class="text-sm text-slate-700"&gt;Memenuhi Ketentuan&lt;/span&gt; &lt;/label&gt; &lt;label class="flex items-center gap-2 cursor-pointer"&gt; &lt;input type="radio" name="hasil" value="tidak" class="accent-red-600"&gt; &lt;span class="text-sm text-slate-700"&gt;Tidak Memenuhi&lt;/span&gt; &lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;label for="f-catatan" class="block text-xs font-600 text-slate-600 mb-1"&gt;Catatan Pemeriksaan&lt;/label&gt; &lt;textarea id="f-catatan" rows="3" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Catatan tambahan..."&gt;&lt;/textarea&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="flex gap-3 pt-2"&gt;&lt;button type="submit" class="bg-blue-700 hover:bg-blue-800 text-white font-600 text-sm px-6 py-2.5 rounded-lg transition flex items-center gap-2"&gt;&lt;i data-lucide="save" style="width:16px;height:16px;"&gt;&lt;/i&gt; Simpan Data&lt;/button&gt; &lt;button type="button" onclick="document.getElementById('irtp-form').reset(); hideToast();" class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-600 text-sm px-6 py-2.5 rounded-lg transition"&gt;Reset&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;/form&gt;&lt;!-- Toast --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;div id="form-toast" class="hidden mt-4 bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-500 px-4 py-3 rounded-lg flex items-center gap-2"&gt;&lt;i data-lucide="check-circle" style="width:16px;height:16px;"&gt;&lt;/i&gt; &lt;span&gt;Data berhasil disimpan! (Demo)&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;/div&gt;&lt;!-- PAGE: DATA PENGAWASAN --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;div id="page-data" class="page fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;h2 class="text-lg font-800 text-slate-800 mb-1"&gt;Data Pengawasan Per Puskesmas&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;p class="text-xs text-slate-400 mb-6"&gt;Klik nama Puskesmas untuk melihat data lengkap di spreadsheet&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;table class="w-full text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;thead class="bg-blue-800 text-white"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;th class="text-left px-4 py-3 font-600 text-xs"&gt;No&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;th class="text-left px-4 py-3 font-600 text-xs"&gt;Puskesmas&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;th class="text-center px-4 py-3 font-600 text-xs"&gt;Total IRTP&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;th class="text-center px-4 py-3 font-600 text-xs"&gt;Memenuhi&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;th class="text-center px-4 py-3 font-600 text-xs"&gt;Tidak&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">         </span>&lt;th class="text-center px-4 py-3 font-600 text-xs"&gt;Aksi&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;/thead&gt;</p>
-<p class="p1"><span class="Apple-converted-space">       </span>&lt;tbody id="puskesmas-table"&gt;&lt;/tbody&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/table&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;p class="text-xs text-slate-400 mt-3 italic"&gt;&lt;i data-lucide="info" style="width:12px;height:12px;display:inline;"&gt;&lt;/i&gt; Link spreadsheet bersifat contoh. Ganti dengan URL spreadsheet yang sesuai.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;/div&gt;&lt;!-- PAGE: REGULASI --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;div id="page-regulasi" class="page fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;h2 class="text-lg font-800 text-slate-800 mb-1"&gt;Regulasi &amp;amp; Peraturan IRTP&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;p class="text-xs text-slate-400 mb-6"&gt;Klik untuk mengunduh dokumen peraturan&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;div class="space-y-3" id="regulasi-list"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;p class="text-xs text-slate-400 mt-4 italic"&gt;&lt;i data-lucide="info" style="width:12px;height:12px;display:inline;"&gt;&lt;/i&gt; Link unduhan bersifat contoh. Ganti URL dengan file dokumen peraturan yang sesuai.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;/div&gt;&lt;!-- FOOTER --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;footer class="bg-blue-900 text-blue-300 text-center text-xs py-4 mt-auto"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;© 2025 SIRASA IRTP — Dinas Kesehatan. Hak cipta dilindungi.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">   </span>&lt;/footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1">// ---- NAVIGATION ----</p>
-<p class="p1">let currentPage = 'dashboard';</p>
-<p class="p1">function navigateTo(page) {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.page').forEach(p =&gt; p.classList.remove('active'));</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const target = document.getElementById('page-' + page);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>if (target) { target.classList.add('active'); target.classList.remove('fade-in'); void target.offsetWidth; target.classList.add('fade-in'); }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('sub-nav').classList.toggle('hidden', page === 'dashboard');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>currentPage = page;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>window.scrollTo(0, 0);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>lucide.createIcons();</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">// ---- PUSKESMAS DATA ----</p>
-<p class="p1">const puskesmasData = [</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ nama: 'Puskesmas Kota A', total: 142, memenuhi: 110, tidak: 32, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_1' },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ nama: 'Puskesmas Kota B', total: 98, memenuhi: 78, tidak: 20, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_2' },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ nama: 'Puskesmas Kecamatan C', total: 87, memenuhi: 65, tidak: 22, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_3' },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ nama: 'Puskesmas Kecamatan D', total: 76, memenuhi: 60, tidak: 16, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_4' },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ nama: 'Puskesmas Kecamatan E', total: 65, memenuhi: 48, tidak: 17, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_5' },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ nama: 'Puskesmas Kecamatan F', total: 54, memenuhi: 41, tidak: 13, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_6' },</p>
-<p class="p1">];</p>
-<p class="p1">const tbody = document.getElementById('puskesmas-table');</p>
-<p class="p1">puskesmasData.forEach((p, i) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>tbody.innerHTML += `&lt;tr class="border-b border-slate-100 hover:bg-blue-50/50 transition"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;td class="px-4 py-3 text-slate-500"&gt;${i+1}&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;td class="px-4 py-3 font-600 text-slate-800"&gt;${p.nama}&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;td class="text-center px-4 py-3"&gt;${p.total}&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;td class="text-center px-4 py-3 text-emerald-700 font-600"&gt;${p.memenuhi}&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;td class="text-center px-4 py-3 text-red-600 font-600"&gt;${p.tidak}&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;td class="text-center px-4 py-3"&gt;&lt;a href="${p.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-600 text-blue-700 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition"&gt;&lt;i data-lucide="external-link" style="width:12px;height:12px;"&gt;&lt;/i&gt; Spreadsheet&lt;/a&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/tr&gt;`;</p>
-<p class="p1">});</p>
-<p class="p2"><br></p>
-<p class="p1">// ---- REGULASI DATA ----</p>
-<p class="p1">const regulasiData = [</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ judul: 'PP No. 86 Tahun 2019 tentang Keamanan Pangan', keterangan: 'Peraturan Pemerintah', icon: 'file-text', url: '#' },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ judul: 'Permenkes No. 15 Tahun 2023 tentang IRTP', keterangan: 'Peraturan Menteri Kesehatan', icon: 'file-text', url: '#' },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ judul: 'Perka BPOM No. 22 Tahun 2018 tentang Pedoman Pemberian SPP-IRT', keterangan: 'Peraturan BPOM', icon: 'file-text', url: '#' },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ judul: 'Perka BPOM No. HK.03.1.23.04.12.2205 tentang Pedoman Pemberian SPP-IRT', keterangan: 'Peraturan BPOM', icon: 'file-text', url: '#' },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ judul: 'UU No. 18 Tahun 2012 tentang Pangan', keterangan: 'Undang-Undang', icon: 'scale', url: '#' },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ judul: 'Permenkes No. 382/Menkes/Per/VI/1989 tentang Pendaftaran Makanan', keterangan: 'Peraturan Menteri Kesehatan', icon: 'file-text', url: '#' },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ judul: 'Pedoman Cara Produksi Pangan yang Baik untuk IRTP (CPPB-IRT)', keterangan: 'Pedoman Teknis', icon: 'book-open', url: '#' },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>{ judul: 'Formulir Pemeriksaan Sarana Produksi IRTP', keterangan: 'Template Formulir', icon: 'clipboard-list', url: '#' },</p>
-<p class="p1">];</p>
-<p class="p1">const regList = document.getElementById('regulasi-list');</p>
-<p class="p1">regulasiData.forEach(r =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>regList.innerHTML += `&lt;a href="${r.url}" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-xl border border-slate-100 shadow-sm p-4 card-hover hover:border-blue-200 transition group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="flex items-center gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0"&gt;&lt;i data-lucide="${r.icon}" style="width:20px;height:20px;color:#b45309;"&gt;&lt;/i&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="flex-1 min-w-0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="text-sm font-600 text-slate-800 group-hover:text-blue-800 transition truncate"&gt;${r.judul}&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="text-xs text-slate-400 mt-0.5"&gt;${r.keterangan}&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="flex-shrink-0 text-slate-300 group-hover:text-blue-600 transition"&gt;&lt;i data-lucide="download" style="width:20px;height:20px;"&gt;&lt;/i&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/a&gt;`;</p>
-<p class="p1">});</p>
-<p class="p2"><br></p>
-<p class="p1">// ---- FORM ----</p>
-<p class="p1">document.getElementById('irtp-form').addEventListener('submit', function(e) {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>e.preventDefault();</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('form-toast').classList.remove('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(() =&gt; { this.reset(); }, 300);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>lucide.createIcons();</p>
-<p class="p1">});</p>
-<p class="p1">function hideToast() { document.getElementById('form-toast').classList.add('hidden'); }</p>
-<p class="p2"><br></p>
-<p class="p1">// ---- CHART ----</p>
-<p class="p1">function initChart() {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const ctx = document.getElementById('yearlyChart').getContext('2d');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>new Chart(ctx, {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>type: 'bar',</p>
-<p class="p1"><span class="Apple-converted-space">    </span>data: {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>labels: ['2019', '2020', '2021', '2022', '2023', '2024'],</p>
-<p class="p1"><span class="Apple-converted-space">      </span>datasets: [</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ label: 'Memenuhi Ketentuan', data: [120, 135, 98, 155, 190, 236], backgroundColor: '#059669', borderRadius: 6, barPercentage: 0.7 },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ label: 'Tidak Memenuhi', data: [45, 52, 68, 40, 55, 53], backgroundColor: '#dc2626', borderRadius: 6, barPercentage: 0.7 }</p>
-<p class="p1"><span class="Apple-converted-space">      </span>]</p>
-<p class="p1"><span class="Apple-converted-space">    </span>},</p>
-<p class="p1"><span class="Apple-converted-space">    </span>options: {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>responsive: true, maintainAspectRatio: false,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>plugins: { legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'rectRounded', font: { size: 12, family: 'Plus Jakarta Sans', weight: '600' } } } },</p>
-<p class="p1"><span class="Apple-converted-space">      </span>scales: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { font: { size: 11, family: 'Plus Jakarta Sans' } } },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>x: { grid: { display: false }, ticks: { font: { size: 12, family: 'Plus Jakarta Sans', weight: '600' } } }</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>});</p>
-<p class="p1">}</p>
-<p class="p1">initChart();</p>
-<p class="p2"><br></p>
-<p class="p1">// ---- ELEMENT SDK ----</p>
-<p class="p1">const defaultConfig = {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>main_title: 'SIRASA IRTP',</p>
-<p class="p1"><span class="Apple-converted-space">  </span>subtitle_text: 'Platform digital untuk monitoring dan evaluasi hasil pengawasan Industri Rumah Tangga Pangan (IRTP) di wilayah kerja Dinas Kesehatan',</p>
-<p class="p1"><span class="Apple-converted-space">  </span>background_color: '#1e3a5f',</p>
-<p class="p1"><span class="Apple-converted-space">  </span>surface_color: '#ffffff',</p>
-<p class="p1"><span class="Apple-converted-space">  </span>text_color: '#1e293b',</p>
-<p class="p1"><span class="Apple-converted-space">  </span>primary_action_color: '#1d4ed8',</p>
-<p class="p1"><span class="Apple-converted-space">  </span>secondary_action_color: '#059669',</p>
-<p class="p1"><span class="Apple-converted-space">  </span>font_family: 'Plus Jakarta Sans',</p>
-<p class="p1"><span class="Apple-converted-space">  </span>font_size: 14</p>
-<p class="p1">};</p>
-<p class="p2"><br></p>
-<p class="p1">async function onConfigChange(config) {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const c = { ...defaultConfig, ...config };</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('main-title').textContent = c.main_title;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('subtitle-text').textContent = c.subtitle_text;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const header = document.getElementById('site-header');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>header.style.background = `linear-gradient(to right, ${c.background_color}, ${adjustBrightness(c.background_color, 20)})`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.font-target').forEach(el =&gt; { el.style.fontFamily = c.font_family + ', sans-serif'; });</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function adjustBrightness(hex, pct) {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>r = Math.min(255, r + Math.round(r * pct / 100));</p>
-<p class="p1"><span class="Apple-converted-space">  </span>g = Math.min(255, g + Math.round(g * pct / 100));</p>
-<p class="p1"><span class="Apple-converted-space">  </span>b = Math.min(255, b + Math.round(b * pct / 100));</p>
-<p class="p1"><span class="Apple-converted-space">  </span>return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">window.elementSdk.init({</p>
-<p class="p1"><span class="Apple-converted-space">  </span>defaultConfig,</p>
-<p class="p1"><span class="Apple-converted-space">  </span>onConfigChange,</p>
-<p class="p1"><span class="Apple-converted-space">  </span>mapToCapabilities: (config) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const c = { ...defaultConfig, ...config };</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const makeColor = (key) =&gt; ({ get: () =&gt; c[key] || defaultConfig[key], set: (v) =&gt; { c[key] = v; window.elementSdk.setConfig({ [key]: v }); } });</p>
-<p class="p1"><span class="Apple-converted-space">    </span>return {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>recolorables: [makeColor('background_color'), makeColor('surface_color'), makeColor('text_color'), makeColor('primary_action_color'), makeColor('secondary_action_color')],</p>
-<p class="p1"><span class="Apple-converted-space">      </span>borderables: [],</p>
-<p class="p1"><span class="Apple-converted-space">      </span>fontEditable: { get: () =&gt; c.font_family || defaultConfig.font_family, set: (v) =&gt; { c.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },</p>
-<p class="p1"><span class="Apple-converted-space">      </span>fontSizeable: { get: () =&gt; c.font_size || defaultConfig.font_size, set: (v) =&gt; { c.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>};</p>
-<p class="p1"><span class="Apple-converted-space">  </span>},</p>
-<p class="p1"><span class="Apple-converted-space">  </span>mapToEditPanelValues: (config) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const c = { ...defaultConfig, ...config };</p>
-<p class="p1"><span class="Apple-converted-space">    </span>return new Map([['main_title', c.main_title], ['subtitle_text', c.subtitle_text]]);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1">});</p>
-<p class="p2"><br></p>
-<p class="p1">lucide.createIcons();</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space"> </span>&lt;script&gt;(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e6d0f99c3619b07',t:'MTc3NTI3MTYwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&amp;&amp;(document.onreadystatechange=e,c())}}}})();&lt;/script&gt;&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
-</body>
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIRASA IRTP</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { body: ['Plus Jakarta Sans', 'sans-serif'] }
+    }
+  }
+}
+</script>
+  <style>
+html, body { height: 100%; margin: 0; }
+* { font-family: 'Plus Jakarta Sans', sans-serif; }
+.page { display: none; }
+.page.active { display: block; }
+.fade-in { animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.card-hover { transition: all 0.25s ease; }
+.card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,50,120,0.12); }
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-slate-50">
+  <div id="app" class="h-full w-full overflow-auto"><!-- HEADER -->
+   <header id="site-header" class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-5 sm:px-6 lg:px-8">
+     <div class="flex items-center gap-4">
+      <div class="flex-shrink-0 w-14 h-14 bg-white/15 rounded-xl flex items-center justify-center backdrop-blur">
+       <svg width="32" height="32" viewbox="0 0 32 32" fill="none"><rect x="4" y="6" width="24" height="20" rx="3" stroke="white" stroke-width="2" /> <path d="M4 12h24" stroke="white" stroke-width="2" /> <circle cx="16" cy="20" r="3" stroke="white" stroke-width="2" /> <path d="M13 20l3-3 3 3" stroke="white" stroke-width="1.5" fill="none" />
+       </svg>
+      </div>
+      <div>
+       <h1 id="main-title" class="text-lg sm:text-xl font-800 tracking-tight leading-tight">SIRASA IRTP</h1>
+       <p class="text-xs sm:text-sm font-600 text-blue-200 mt-0.5">Sistem Monitoring Pengawasan IRTP</p>
+       <p id="subtitle-text" class="text-xs text-blue-300 mt-0.5 max-w-2xl">Platform digital untuk monitoring dan evaluasi hasil pengawasan Industri Rumah Tangga Pangan (IRTP) di wilayah kerja Dinas Kesehatan</p>
+      </div>
+     </div>
+    </div>
+   </header><!-- NAV for sub-pages -->
+   <nav id="sub-nav" class="bg-white border-b border-slate-200 shadow-sm hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><button onclick="navigateTo('dashboard')" class="inline-flex items-center gap-2 py-3 text-sm font-600 text-blue-700 hover:text-blue-900 transition"> <i data-lucide="arrow-left" style="width:16px;height:16px;"></i> Kembali ke Dashboard </button>
+    </div>
+   </nav><!-- PAGE: DASHBOARD -->
+   <div id="page-dashboard" class="page active fade-in">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6"><!-- Stats Cards -->
+     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 card-hover">
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
+         <i data-lucide="building-2" style="width:20px;height:20px;color:#1e40af;"></i>
+        </div>
+        <div>
+         <p class="text-xs text-slate-500 font-500">Total IRTP</p>
+         <p class="text-xl font-800 text-slate-800">1.247</p>
+        </div>
+       </div>
+      </div>
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 card-hover">
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+         <i data-lucide="check-circle" style="width:20px;height:20px;color:#047857;"></i>
+        </div>
+        <div>
+         <p class="text-xs text-slate-500 font-500">Memenuhi</p>
+         <p class="text-xl font-800 text-emerald-700">934</p>
+        </div>
+       </div>
+      </div>
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 card-hover">
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center">
+         <i data-lucide="x-circle" style="width:20px;height:20px;color:#b91c1c;"></i>
+        </div>
+        <div>
+         <p class="text-xs text-slate-500 font-500">Tidak Memenuhi</p>
+         <p class="text-xl font-800 text-red-700">313</p>
+        </div>
+       </div>
+      </div>
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 card-hover">
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center">
+         <i data-lucide="clock" style="width:20px;height:20px;color:#b45309;"></i>
+        </div>
+        <div>
+         <p class="text-xs text-slate-500 font-500">Puskesmas</p>
+         <p class="text-xl font-800 text-slate-800">18</p>
+        </div>
+       </div>
+      </div>
+     </div><!-- Chart -->
+     <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5 mb-6">
+      <h2 class="text-base font-700 text-slate-800 mb-1">Grafik Pengawasan IRTP Per Tahun</h2>
+      <p class="text-xs text-slate-400 mb-4">Perbandingan IRTP yang memenuhi dan tidak memenuhi ketentuan</p>
+      <div style="position:relative; height:300px;">
+       <canvas id="yearlyChart"></canvas>
+      </div>
+     </div><!-- Action Buttons -->
+     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"><button onclick="navigateTo('form')" class="card-hover bg-gradient-to-br from-blue-700 to-blue-800 text-white rounded-xl p-5 text-left shadow-md hover:shadow-lg transition group">
+       <div class="w-11 h-11 bg-white/15 rounded-lg flex items-center justify-center mb-3">
+        <i data-lucide="clipboard-edit" style="width:22px;height:22px;"></i>
+       </div><p class="font-700 text-sm">Form Input Hasil Pemeriksaan</p><p class="text-xs text-blue-200 mt-1">Input data hasil pengawasan IRTP</p>
+       <div class="mt-3 flex items-center gap-1 text-xs text-blue-200 group-hover:text-white transition">
+        <span>Buka Form</span><i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+       </div></button> <button onclick="navigateTo('data')" class="card-hover bg-gradient-to-br from-emerald-600 to-emerald-700 text-white rounded-xl p-5 text-left shadow-md hover:shadow-lg transition group">
+       <div class="w-11 h-11 bg-white/15 rounded-lg flex items-center justify-center mb-3">
+        <i data-lucide="database" style="width:22px;height:22px;"></i>
+       </div><p class="font-700 text-sm">Data Pengawasan</p><p class="text-xs text-emerald-200 mt-1">Lihat data per Puskesmas</p>
+       <div class="mt-3 flex items-center gap-1 text-xs text-emerald-200 group-hover:text-white transition">
+        <span>Lihat Data</span><i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+       </div></button> <button onclick="navigateTo('regulasi')" class="card-hover bg-gradient-to-br from-amber-600 to-amber-700 text-white rounded-xl p-5 text-left shadow-md hover:shadow-lg transition group">
+       <div class="w-11 h-11 bg-white/15 rounded-lg flex items-center justify-center mb-3">
+        <i data-lucide="book-open" style="width:22px;height:22px;"></i>
+       </div><p class="font-700 text-sm">Regulasi IRTP</p><p class="text-xs text-amber-200 mt-1">Kumpulan peraturan &amp; pedoman</p>
+       <div class="mt-3 flex items-center gap-1 text-xs text-amber-200 group-hover:text-white transition">
+        <span>Lihat Regulasi</span><i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+       </div></button>
+     </div>
+    </div>
+   </div><!-- PAGE: FORM INPUT -->
+   <div id="page-form" class="page fade-in">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+     <h2 class="text-lg font-800 text-slate-800 mb-1">Form Input Hasil Pemeriksaan IRTP</h2>
+     <p class="text-xs text-slate-400 mb-6">Masukkan data hasil pengawasan lapangan</p>
+     <form id="irtp-form" class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 space-y-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+       <div><label for="f-nama" class="block text-xs font-600 text-slate-600 mb-1">Nama IRTP</label> <input id="f-nama" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Nama usaha IRTP">
+       </div>
+       <div><label for="f-pemilik" class="block text-xs font-600 text-slate-600 mb-1">Nama Pemilik</label> <input id="f-pemilik" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Nama pemilik">
+       </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+       <div><label for="f-puskesmas" class="block text-xs font-600 text-slate-600 mb-1">Puskesmas</label> <select id="f-puskesmas" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"> <option value="">Pilih Puskesmas</option> <option>Puskesmas Kota A</option> <option>Puskesmas Kota B</option> <option>Puskesmas Kecamatan C</option> <option>Puskesmas Kecamatan D</option> <option>Puskesmas Kecamatan E</option> </select>
+       </div>
+       <div><label for="f-tanggal" class="block text-xs font-600 text-slate-600 mb-1">Tanggal Pemeriksaan</label> <input id="f-tanggal" type="date" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+       </div>
+      </div>
+      <div><label for="f-alamat" class="block text-xs font-600 text-slate-600 mb-1">Alamat IRTP</label> <input id="f-alamat" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Alamat lengkap">
+      </div>
+      <div><label for="f-produk" class="block text-xs font-600 text-slate-600 mb-1">Jenis Produk</label> <input id="f-produk" type="text" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Contoh: Keripik, Kue Kering, dll">
+      </div>
+      <div><label class="block text-xs font-600 text-slate-600 mb-1">Hasil Pemeriksaan</label>
+       <div class="flex gap-4"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="hasil" value="memenuhi" class="accent-emerald-600"> <span class="text-sm text-slate-700">Memenuhi Ketentuan</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="hasil" value="tidak" class="accent-red-600"> <span class="text-sm text-slate-700">Tidak Memenuhi</span> </label>
+       </div>
+      </div>
+      <div><label for="f-catatan" class="block text-xs font-600 text-slate-600 mb-1">Catatan Pemeriksaan</label> <textarea id="f-catatan" rows="3" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Catatan tambahan..."></textarea>
+      </div>
+      <div class="flex gap-3 pt-2"><button type="submit" class="bg-blue-700 hover:bg-blue-800 text-white font-600 text-sm px-6 py-2.5 rounded-lg transition flex items-center gap-2"><i data-lucide="save" style="width:16px;height:16px;"></i> Simpan Data</button> <button type="button" onclick="document.getElementById('irtp-form').reset(); hideToast();" class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-600 text-sm px-6 py-2.5 rounded-lg transition">Reset</button>
+      </div>
+     </form><!-- Toast -->
+     <div id="form-toast" class="hidden mt-4 bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-500 px-4 py-3 rounded-lg flex items-center gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> <span>Data berhasil disimpan! (Demo)</span>
+     </div>
+    </div>
+   </div><!-- PAGE: DATA PENGAWASAN -->
+   <div id="page-data" class="page fade-in">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+     <h2 class="text-lg font-800 text-slate-800 mb-1">Data Pengawasan Per Puskesmas</h2>
+     <p class="text-xs text-slate-400 mb-6">Klik nama Puskesmas untuk melihat data lengkap di spreadsheet</p>
+     <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+      <table class="w-full text-sm">
+       <thead class="bg-blue-800 text-white">
+        <tr>
+         <th class="text-left px-4 py-3 font-600 text-xs">No</th>
+         <th class="text-left px-4 py-3 font-600 text-xs">Puskesmas</th>
+         <th class="text-center px-4 py-3 font-600 text-xs">Total IRTP</th>
+         <th class="text-center px-4 py-3 font-600 text-xs">Memenuhi</th>
+         <th class="text-center px-4 py-3 font-600 text-xs">Tidak</th>
+         <th class="text-center px-4 py-3 font-600 text-xs">Aksi</th>
+        </tr>
+       </thead>
+       <tbody id="puskesmas-table"></tbody>
+      </table>
+     </div>
+     <p class="text-xs text-slate-400 mt-3 italic"><i data-lucide="info" style="width:12px;height:12px;display:inline;"></i> Link spreadsheet bersifat contoh. Ganti dengan URL spreadsheet yang sesuai.</p>
+    </div>
+   </div><!-- PAGE: REGULASI -->
+   <div id="page-regulasi" class="page fade-in">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+     <h2 class="text-lg font-800 text-slate-800 mb-1">Regulasi &amp; Peraturan IRTP</h2>
+     <p class="text-xs text-slate-400 mb-6">Klik untuk mengunduh dokumen peraturan</p>
+     <div class="space-y-3" id="regulasi-list"></div>
+     <p class="text-xs text-slate-400 mt-4 italic"><i data-lucide="info" style="width:12px;height:12px;display:inline;"></i> Link unduhan bersifat contoh. Ganti URL dengan file dokumen peraturan yang sesuai.</p>
+    </div>
+   </div><!-- FOOTER -->
+   <footer class="bg-blue-900 text-blue-300 text-center text-xs py-4 mt-auto">
+    <p>© 2025 SIRASA IRTP — Dinas Kesehatan. Hak cipta dilindungi.</p>
+   </footer>
+  </div>
+  <script>
+// ---- NAVIGATION ----
+let currentPage = 'dashboard';
+function navigateTo(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + page);
+  if (target) { target.classList.add('active'); target.classList.remove('fade-in'); void target.offsetWidth; target.classList.add('fade-in'); }
+  document.getElementById('sub-nav').classList.toggle('hidden', page === 'dashboard');
+  currentPage = page;
+  window.scrollTo(0, 0);
+  lucide.createIcons();
+}
+
+// ---- PUSKESMAS DATA ----
+const puskesmasData = [
+  { nama: 'Puskesmas Kota A', total: 142, memenuhi: 110, tidak: 32, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_1' },
+  { nama: 'Puskesmas Kota B', total: 98, memenuhi: 78, tidak: 20, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_2' },
+  { nama: 'Puskesmas Kecamatan C', total: 87, memenuhi: 65, tidak: 22, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_3' },
+  { nama: 'Puskesmas Kecamatan D', total: 76, memenuhi: 60, tidak: 16, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_4' },
+  { nama: 'Puskesmas Kecamatan E', total: 65, memenuhi: 48, tidak: 17, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_5' },
+  { nama: 'Puskesmas Kecamatan F', total: 54, memenuhi: 41, tidak: 13, url: 'https://docs.google.com/spreadsheets/d/CONTOH_ID_6' },
+];
+const tbody = document.getElementById('puskesmas-table');
+puskesmasData.forEach((p, i) => {
+  tbody.innerHTML += `<tr class="border-b border-slate-100 hover:bg-blue-50/50 transition">
+    <td class="px-4 py-3 text-slate-500">${i+1}</td>
+    <td class="px-4 py-3 font-600 text-slate-800">${p.nama}</td>
+    <td class="text-center px-4 py-3">${p.total}</td>
+    <td class="text-center px-4 py-3 text-emerald-700 font-600">${p.memenuhi}</td>
+    <td class="text-center px-4 py-3 text-red-600 font-600">${p.tidak}</td>
+    <td class="text-center px-4 py-3"><a href="${p.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-600 text-blue-700 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition"><i data-lucide="external-link" style="width:12px;height:12px;"></i> Spreadsheet</a></td>
+  </tr>`;
+});
+
+// ---- REGULASI DATA ----
+const regulasiData = [
+  { judul: 'PP No. 86 Tahun 2019 tentang Keamanan Pangan', keterangan: 'Peraturan Pemerintah', icon: 'file-text', url: '#' },
+  { judul: 'Permenkes No. 15 Tahun 2023 tentang IRTP', keterangan: 'Peraturan Menteri Kesehatan', icon: 'file-text', url: '#' },
+  { judul: 'Perka BPOM No. 22 Tahun 2018 tentang Pedoman Pemberian SPP-IRT', keterangan: 'Peraturan BPOM', icon: 'file-text', url: '#' },
+  { judul: 'Perka BPOM No. HK.03.1.23.04.12.2205 tentang Pedoman Pemberian SPP-IRT', keterangan: 'Peraturan BPOM', icon: 'file-text', url: '#' },
+  { judul: 'UU No. 18 Tahun 2012 tentang Pangan', keterangan: 'Undang-Undang', icon: 'scale', url: '#' },
+  { judul: 'Permenkes No. 382/Menkes/Per/VI/1989 tentang Pendaftaran Makanan', keterangan: 'Peraturan Menteri Kesehatan', icon: 'file-text', url: '#' },
+  { judul: 'Pedoman Cara Produksi Pangan yang Baik untuk IRTP (CPPB-IRT)', keterangan: 'Pedoman Teknis', icon: 'book-open', url: '#' },
+  { judul: 'Formulir Pemeriksaan Sarana Produksi IRTP', keterangan: 'Template Formulir', icon: 'clipboard-list', url: '#' },
+];
+const regList = document.getElementById('regulasi-list');
+regulasiData.forEach(r => {
+  regList.innerHTML += `<a href="${r.url}" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-xl border border-slate-100 shadow-sm p-4 card-hover hover:border-blue-200 transition group">
+    <div class="flex items-center gap-4">
+      <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0"><i data-lucide="${r.icon}" style="width:20px;height:20px;color:#b45309;"></i></div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-600 text-slate-800 group-hover:text-blue-800 transition truncate">${r.judul}</p>
+        <p class="text-xs text-slate-400 mt-0.5">${r.keterangan}</p>
+      </div>
+      <div class="flex-shrink-0 text-slate-300 group-hover:text-blue-600 transition"><i data-lucide="download" style="width:20px;height:20px;"></i></div>
+    </div>
+  </a>`;
+});
+
+// ---- FORM ----
+document.getElementById('irtp-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('form-toast').classList.remove('hidden');
+  setTimeout(() => { this.reset(); }, 300);
+  lucide.createIcons();
+});
+function hideToast() { document.getElementById('form-toast').classList.add('hidden'); }
+
+// ---- CHART ----
+function initChart() {
+  const ctx = document.getElementById('yearlyChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+      datasets: [
+        { label: 'Memenuhi Ketentuan', data: [120, 135, 98, 155, 190, 236], backgroundColor: '#059669', borderRadius: 6, barPercentage: 0.7 },
+        { label: 'Tidak Memenuhi', data: [45, 52, 68, 40, 55, 53], backgroundColor: '#dc2626', borderRadius: 6, barPercentage: 0.7 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'rectRounded', font: { size: 12, family: 'Plus Jakarta Sans', weight: '600' } } } },
+      scales: {
+        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { font: { size: 11, family: 'Plus Jakarta Sans' } } },
+        x: { grid: { display: false }, ticks: { font: { size: 12, family: 'Plus Jakarta Sans', weight: '600' } } }
+      }
+    }
+  });
+}
+initChart();
+
+// ---- ELEMENT SDK ----
+const defaultConfig = {
+  main_title: 'SIRASA IRTP',
+  subtitle_text: 'Platform digital untuk monitoring dan evaluasi hasil pengawasan Industri Rumah Tangga Pangan (IRTP) di wilayah kerja Dinas Kesehatan',
+  background_color: '#1e3a5f',
+  surface_color: '#ffffff',
+  text_color: '#1e293b',
+  primary_action_color: '#1d4ed8',
+  secondary_action_color: '#059669',
+  font_family: 'Plus Jakarta Sans',
+  font_size: 14
+};
+
+async function onConfigChange(config) {
+  const c = { ...defaultConfig, ...config };
+  document.getElementById('main-title').textContent = c.main_title;
+  document.getElementById('subtitle-text').textContent = c.subtitle_text;
+  const header = document.getElementById('site-header');
+  header.style.background = `linear-gradient(to right, ${c.background_color}, ${adjustBrightness(c.background_color, 20)})`;
+  document.querySelectorAll('.font-target').forEach(el => { el.style.fontFamily = c.font_family + ', sans-serif'; });
+}
+
+function adjustBrightness(hex, pct) {
+  let r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+  r = Math.min(255, r + Math.round(r * pct / 100));
+  g = Math.min(255, g + Math.round(g * pct / 100));
+  b = Math.min(255, b + Math.round(b * pct / 100));
+  return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
+}
+
+window.elementSdk.init({
+  defaultConfig,
+  onConfigChange,
+  mapToCapabilities: (config) => {
+    const c = { ...defaultConfig, ...config };
+    const makeColor = (key) => ({ get: () => c[key] || defaultConfig[key], set: (v) => { c[key] = v; window.elementSdk.setConfig({ [key]: v }); } });
+    return {
+      recolorables: [makeColor('background_color'), makeColor('surface_color'), makeColor('text_color'), makeColor('primary_action_color'), makeColor('secondary_action_color')],
+      borderables: [],
+      fontEditable: { get: () => c.font_family || defaultConfig.font_family, set: (v) => { c.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+      fontSizeable: { get: () => c.font_size || defaultConfig.font_size, set: (v) => { c.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+    };
+  },
+  mapToEditPanelValues: (config) => {
+    const c = { ...defaultConfig, ...config };
+    return new Map([['main_title', c.main_title], ['subtitle_text', c.subtitle_text]]);
+  }
+});
+
+lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e6d0f99c3619b07',t:'MTc3NTI3MTYwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
