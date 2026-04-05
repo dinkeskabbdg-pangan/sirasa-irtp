@@ -192,9 +192,17 @@ html, body { height: 100%; margin: 0; }
      <h2 class="text-lg font-800 text-slate-800 mb-1">Regulasi &amp; Peraturan IRTP</h2>
      <p class="text-xs text-slate-400 mb-6">Klik untuk mengunduh dokumen peraturan</p>
      <div class="space-y-3" id="regulasi-list"></div>
-     <p class="text-xs text-slate-400 mt-4 italic"><i data-lucide="info" style="width:12px;height:12px;display:inline;"></i> Link unduhan bersifat contoh. Ganti URL dengan file dokumen peraturan yang sesuai.</p>
+     <div id="pdf-viewer" class="mt-6 hidden">
+  <iframe 
+    id="pdf-frame"
+    width="100%" 
+    height="500"
+    class="rounded-xl border">
+  </iframe>
+</div>
     </div>
-   </div><!-- FOOTER -->
+   </div>
+  <!-- FOOTER -->
    <footer class="bg-blue-900 text-blue-300 text-center text-xs py-4 mt-auto">
     <p>© 2025 SIRASA IRTP — Dinas Kesehatan. Hak cipta dilindungi.</p>
    </footer>
@@ -400,25 +408,131 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ---- REGULASI DATA ----
 const regulasiData = [
-  { judul: 'PP No. 86 Tahun 2019 tentang Keamanan Pangan', keterangan: 'Peraturan Pemerintah', icon: 'file-text', url: '#' },
-  { judul: 'Permenkes No. 15 Tahun 2023 tentang IRTP', keterangan: 'Peraturan Menteri Kesehatan', icon: 'file-text', url: '#' },
-  { judul: 'Perka BPOM No. 22 Tahun 2018 tentang Pedoman Pemberian SPP-IRT', keterangan: 'Peraturan BPOM', icon: 'file-text', url: '#' },
-  { judul: 'Perka BPOM No. HK.03.1.23.04.12.2205 tentang Pedoman Pemberian SPP-IRT', keterangan: 'Peraturan BPOM', icon: 'file-text', url: '#' },
-  { judul: 'UU No. 18 Tahun 2012 tentang Pangan', keterangan: 'Undang-Undang', icon: 'scale', url: '#' },
-  { judul: 'Permenkes No. 382/Menkes/Per/VI/1989 tentang Pendaftaran Makanan', keterangan: 'Peraturan Menteri Kesehatan', icon: 'file-text', url: '#' },
-  { judul: 'Pedoman Cara Produksi Pangan yang Baik untuk IRTP (CPPB-IRT)', keterangan: 'Pedoman Teknis', icon: 'book-open', url: '#' },
-  { judul: 'Formulir Pemeriksaan Sarana Produksi IRTP', keterangan: 'Template Formulir', icon: 'clipboard-list', url: '#' },
+
+  // ===== UNDANG-UNDANG =====
+  {
+    judul: "UU No. 8 Tahun 1999 tentang Perlindungan Konsumen",
+    keterangan: "Undang-Undang",
+    icon: "scale",
+    url: "https://drive.google.com/file/d/1aRBTZjZ1SE5kB33t_6VNb9m0mnIL5qEZ/preview"
+  },
+  {
+    judul: "UU No. 17 Tahun 2023 tentang Kesehatan",
+    keterangan: "Undang-Undang",
+    icon: "scale",
+    url: "https://drive.google.com/file/d/1Bpt-dNJQxc40p_9Ufo7y8FxHO04Bs7pO/preview"
+  },
+  {
+    judul: "UU No. 18 Tahun 2012 tentang Pangan",
+    keterangan: "Undang-Undang",
+    icon: "scale",
+    url: "https://drive.google.com/file/d/1zHJkAPK4ajuSDkiEG0njLjHOmqVbR8JE/preview"
+  },
+  {
+    judul: "UU No. 23 Tahun 2014 tentang Pemerintahan Daerah",
+    keterangan: "Undang-Undang",
+    icon: "scale",
+    url: "https://drive.google.com/file/d/1_wxYdjMYRXuxJHPRlXkGigGR0oh86ILS/preview"
+  },
+
+  // ===== PERATURAN PEMERINTAH =====
+  {
+    judul: "PP No. 69 Tahun 1999 tentang Label dan Iklan Pangan",
+    keterangan: "Peraturan Pemerintah",
+    icon: "file-text",
+    url: "https://drive.google.com/file/d/1Kpr5eVm4hM1xFxDucbVHj8WFN6-TCbLr/preview"
+  },
+  {
+    judul: "PP No. 28 Tahun 2025 tentang Perizinan Berbasis Risiko",
+    keterangan: "Peraturan Pemerintah",
+    icon: "file-text",
+    url: "https://drive.google.com/file/d/1f9jR-xRrYy4YBmra20N6_MOrojkCAOus/preview"
+  },
+
+  // ===== INPRES =====
+  {
+    judul: "Instruksi Presiden No. 3 Tahun 2017 tentang Pengawasan Obat dan Makanan",
+    keterangan: "Instruksi Presiden",
+    icon: "file-text",
+    url: "https://drive.google.com/file/d/1cV78PXCoRppzZwGqNuZZ1OYgklvmXuxR/preview"
+  },
+
+  // ===== PERMENDAGRI =====
+  {
+    judul: "Permendagri No. 41 Tahun 2018 tentang Pengawasan Obat dan Makanan",
+    keterangan: "Permendagri",
+    icon: "file-text",
+    url: "https://drive.google.com/file/d/1VANG4qOyVgfvtB0TGlJllb2GpE6yaMZO/preview"
+  },
+
+  // ===== BPOM =====
+  {
+    judul: "Peraturan BPOM No. 4 Tahun 2024 tentang SPP-IRT",
+    keterangan: "BPOM",
+    icon: "book-open",
+    url: "https://drive.google.com/file/d/1lCvXz7vj9qQsIKAO3EoQmlwXMZIjBZD1/preview"
+  },
+  {
+    judul: "Peraturan BPOM No. 10 Tahun 2021",
+    keterangan: "BPOM",
+    icon: "book-open",
+    url: "https://drive.google.com/file/d/1B2vXp3vVRT18hQQkzRybr0qTGiWYMkl3/preview"
+  },
+  {
+    judul: "Peraturan BPOM No. 13 Tahun 2023",
+    keterangan: "BPOM",
+    icon: "book-open",
+    url: "https://drive.google.com/file/d/1_QwfIETzWbmhpHDn25nPeQCS9_zy1Mc5/preview"
+  },
+  {
+    judul: "Peraturan BPOM No. 16 Tahun 2020",
+    keterangan: "BPOM",
+    icon: "book-open",
+    url: "https://drive.google.com/file/d/1mu7_c5lGRbPQFgKX49qjfc9sWql2KxlK/preview"
+  },
+  {
+    judul: "Peraturan BPOM No. 31 Tahun 2018",
+    keterangan: "BPOM",
+    icon: "book-open",
+    url: "https://drive.google.com/file/d/1dPwVda0HXkInSg-WQS-R59ogabGXZEMA/preview"
+  },
+  {
+    judul: "Peraturan BPOM No. 23 Tahun 2018",
+    keterangan: "BPOM",
+    icon: "book-open",
+    url: "https://drive.google.com/file/d/1Vetg857epGqhS2A1YoHU8TyIdwA86Y7V/preview"
+  },
+
+  // ===== IRTP KHUSUS =====
+  {
+    judul: "CPPB-IRT (Perka BPOM 2206 Tahun 2012)",
+    keterangan: "Pedoman IRTP",
+    icon: "book-open",
+    url: "https://drive.google.com/file/d/1bRCjNEwgIk20CP030A2whbHc5poJW3bS/preview"
+  },
+  {
+    judul: "Pemeriksaan IRTP (Perka BPOM 2207 Tahun 2012)",
+    keterangan: "Pedoman IRTP",
+    icon: "book-open",
+    url: "https://drive.google.com/file/d/1tVqOklyppcGrVDXBe7CQMGgIGVEJWXvM/preview"
+  }
+
 ];
+   
 const regList = document.getElementById('regulasi-list');
 regulasiData.forEach(r => {
-  regList.innerHTML += `<a href="${r.url}" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-xl border border-slate-100 shadow-sm p-4 card-hover hover:border-blue-200 transition group">
+  regList.innerHTML += `<a href="#" onclick="openPDF('${r.url}')" class="block bg-white rounded-xl border border-slate-100 shadow-sm p-4 card-hover hover:border-blue-200 transition group">
     <div class="flex items-center gap-4">
-      <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0"><i data-lucide="${r.icon}" style="width:20px;height:20px;color:#b45309;"></i></div>
+      <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
+        <i data-lucide="${r.icon}" style="width:20px;height:20px;color:#b45309;"></i>
+      </div>
       <div class="flex-1 min-w-0">
         <p class="text-sm font-600 text-slate-800 group-hover:text-blue-800 transition truncate">${r.judul}</p>
         <p class="text-xs text-slate-400 mt-0.5">${r.keterangan}</p>
       </div>
-      <div class="flex-shrink-0 text-slate-300 group-hover:text-blue-600 transition"><i data-lucide="download" style="width:20px;height:20px;"></i></div>
+      <div class="flex-shrink-0 text-slate-300 group-hover:text-blue-600 transition">
+        <i data-lucide="eye" style="width:20px;height:20px;"></i>
+      </div>
     </div>
   </a>`;
 });
@@ -473,6 +587,19 @@ async function initChart() {
 }
 
 window.addEventListener('DOMContentLoaded', initChart);
+
+   function openPDF(url) {
+  const viewer = document.getElementById('pdf-viewer');
+  const frame = document.getElementById('pdf-frame');
+
+  frame.src = url;
+  viewer.classList.remove('hidden');
+
+  window.scrollTo({
+    top: viewer.offsetTop - 80,
+    behavior: 'smooth'
+  });
+}
    
 // ---- ELEMENT SDK ----
 const defaultConfig = {
