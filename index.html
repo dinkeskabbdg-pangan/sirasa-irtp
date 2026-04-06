@@ -263,7 +263,10 @@ function navigateTo(page) {
   document.getElementById('sub-nav').classList.toggle('hidden', page === 'dashboard');
   currentPage = page;
   window.scrollTo(0, 0);
+  document.addEventListener('DOMContentLoaded', () => {
+  initChart();
   lucide.createIcons();
+});
 }
 
 // ---- KECAMATAN DATA ----
@@ -650,7 +653,6 @@ async function initChart() {
   }
 }
 
-window.addEventListener('DOMContentLoaded', initChart);
 
    function openPDF(url) {
   const viewer = document.getElementById('pdf-viewer');
