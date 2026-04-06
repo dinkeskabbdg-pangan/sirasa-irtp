@@ -46,9 +46,8 @@ html, body { height: 100%; margin: 0; }
   background-repeat: no-repeat;
   background-position: center;
 
-  opacity: 0.12;
-  filter: grayscale(100%) brightness(200%);
-  mix-blend-mode: soft-light;
+  opacity: 0.15;
+  filter: grayscale(100%) brightness(180%);
 
   transform: translateY(-50%);
   pointer-events: none;
@@ -81,7 +80,9 @@ html, body { height: 100%; margin: 0; }
   </div>
 
 </div>
-   </header><!-- NAV for sub-pages -->
+     </div>
+   </header>
+   <!-- NAV for sub-pages -->
    <nav id="sub-nav" class="bg-white border-b border-slate-200 shadow-sm hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><button onclick="navigateTo('dashboard')" class="inline-flex items-center gap-2 py-3 text-sm font-600 text-blue-700 hover:text-blue-900 transition"> <i data-lucide="arrow-left" style="width:16px;height:16px;"></i> Kembali ke Dashboard </button>
     </div>
@@ -204,6 +205,12 @@ html, body { height: 100%; margin: 0; }
    <div id="page-data" class="page fade-in">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
      <h2 class="text-lg font-800 text-slate-800 mb-1">Data Pengawasan Per Kecamatan</h2>
+     <input 
+  type="text" 
+  id="search-kecamatan"
+  placeholder="Cari kecamatan atau puskesmas..."
+  class="w-full mb-4 px-4 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+/>
      <p class="text-xs text-slate-400 mb-6">Klik nama Kecamatan untuk melihat data lengkap di spreadsheet</p>
      <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
       <table class="w-full text-sm">
@@ -421,22 +428,35 @@ document.addEventListener('DOMContentLoaded', () => {
       .map(p => `<div>• ${p}</div>`)
       .join('');
 
-    tbody.innerHTML += `
-      <tr class="border-b border-slate-100 hover:bg-blue-50/50 transition">
-        <td class="px-4 py-3 text-slate-500">${i + 1}</td>
-        <td class="px-4 py-3 font-600 text-slate-800">${kec.kecamatan}</td>
-        <td class="px-4 py-3 text-slate-600">${listPuskesmas}</td>
-        <td class="text-center px-4 py-3">
-          <a href="${kec.url}" target="_blank"
-            class="inline-flex items-center gap-1 text-xs font-600 text-blue-700 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition">
-            <i data-lucide="external-link" style="width:12px;height:12px;"></i>
-            Spreadsheet
-          </a>
-        </td>
-      </tr>
-    `;
+    tbody.insertAdjacentHTML('beforeend', `
+  <tr class="border-b border-slate-100 hover:bg-blue-50/50 transition">
+    <td class="px-4 py-3 text-slate-500">${i + 1}</td>
+    <td class="px-4 py-3 font-600 text-slate-800">${kec.kecamatan}</td>
+    <td class="px-4 py-3 text-slate-600">${listPuskesmas}</td>
+    <td class="text-center px-4 py-3">
+      <a href="${kec.url}" target="_blank"
+        class="inline-flex items-center gap-1 text-xs font-600 text-blue-700 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition">
+        <i data-lucide="external-link" style="width:12px;height:12px;"></i>
+        Spreadsheet
+      </a>
+    </td>
+  </tr>
+`);
   });
+const searchInput = document.getElementById('search-kecamatan');
 
+if (searchInput) {
+  searchInput.addEventListener('input', function () {
+    const keyword = this.value.toLowerCase();
+
+    const rows = document.querySelectorAll('#kecamatan-table tr');
+
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      row.style.display = text.includes(keyword) ? '' : 'none';
+    });
+  });
+}
 });
 
 // ---- REGULASI DATA ----
@@ -552,22 +572,27 @@ const regulasiData = [
 ];
    
 const regList = document.getElementById('regulasi-list');
-regulasiData.forEach(r => {
-  regList.innerHTML += `<a href="#" onclick="openPDF('${r.url}')" class="block bg-white rounded-xl border border-slate-100 shadow-sm p-4 card-hover hover:border-blue-200 transition group">
-    <div class="flex items-center gap-4">
-      <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
-        <i data-lucide="${r.icon}" style="width:20px;height:20px;color:#b45309;"></i>
-      </div>
-      <div class="flex-1 min-w-0">
-        <p class="text-sm font-600 text-slate-800 group-hover:text-blue-800 transition truncate">${r.judul}</p>
-        <p class="text-xs text-slate-400 mt-0.5">${r.keterangan}</p>
-      </div>
-      <div class="flex-shrink-0 text-slate-300 group-hover:text-blue-600 transition">
-        <i data-lucide="eye" style="width:20px;height:20px;"></i>
-      </div>
-    </div>
-  </a>`;
-});
+
+if (regList) {
+  regulasiData.forEach(r => {
+    regList.innerHTML += `
+      <a href="#" onclick="openPDF('${r.url}')" class="block bg-white rounded-xl border border-slate-100 shadow-sm p-4 card-hover hover:border-blue-200 transition group">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="${r.icon}" style="width:20px;height:20px;color:#b45309;"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-600 text-slate-800 group-hover:text-blue-800 transition truncate">${r.judul}</p>
+            <p class="text-xs text-slate-400 mt-0.5">${r.keterangan}</p>
+          </div>
+          <div class="flex-shrink-0 text-slate-300 group-hover:text-blue-600 transition">
+            <i data-lucide="eye" style="width:20px;height:20px;"></i>
+          </div>
+        </div>
+      </a>
+    `;
+  });
+}
 
 // ---- CHART ----
 async function initChart() {
