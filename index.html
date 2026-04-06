@@ -187,7 +187,15 @@ html, body { height: 100%; margin: 0; }
         height="400" 
         frameborder="0">
       </iframe>
-
+<p class="text-xs text-center mt-2">
+  Jika form tidak muncul, 
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbXW3efxzgq7yktXZceydUggHAdq_5LvvBx73bXIj4UOGYhQ/viewform" 
+     target="_blank"
+     class="text-blue-600 underline">
+    klik di sini
+  </a>
+</p>
+     
       <!-- Keterangan -->
       <p class="text-xs text-slate-500 mt-3 text-center italic">
         Klik tombol di atas untuk mengisi form dan upload dokumentasi pemeriksaan
@@ -449,7 +457,7 @@ if (searchInput) {
   searchInput.addEventListener('input', function () {
     const keyword = this.value.toLowerCase();
 
-    const rows = document.querySelectorAll('#kecamatan-table tr');
+    const rows = tbody.querySelectorAll('tr');
 
     rows.forEach(row => {
       const text = row.innerText.toLowerCase();
@@ -575,7 +583,7 @@ const regList = document.getElementById('regulasi-list');
 
 if (regList) {
   regulasiData.forEach(r => {
-    regList.innerHTML += `
+    regList.insertAdjacentHTML('beforeend', `
       <a href="#" onclick="openPDF('${r.url}')" class="block bg-white rounded-xl border border-slate-100 shadow-sm p-4 card-hover hover:border-blue-200 transition group">
         <div class="flex items-center gap-4">
           <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
@@ -596,8 +604,9 @@ if (regList) {
 
 // ---- CHART ----
 async function initChart() {
-  const res = await fetch("https://opensheet.elk.sh/1DgBTzvUkEH2Vjbw1VCODnUzwHN0E_S0yaqTkDnfb5YI/SaranaIRTP");
-  const data = await res.json();
+  try {
+    const res = await fetch("https://opensheet.elk.sh/1DgBTzvUkEH2Vjbw1VCODnUzwHN0E_S0yaqTkDnfb5YI/SaranaIRTP");
+    const data = await res.json();
 
   const labels = data.map(d => d["Tahun"]);
   const diawasi = data.map(d => Number(d["Diawasi"]));
@@ -641,6 +650,9 @@ async function initChart() {
     },
     plugins: [ChartDataLabels]
   });
+     } catch (e) {
+    console.error("Chart gagal load", e);
+  }
 }
 
 window.addEventListener('DOMContentLoaded', initChart);
