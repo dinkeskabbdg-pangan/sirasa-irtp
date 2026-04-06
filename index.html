@@ -28,16 +28,42 @@ html, body { height: 100%; margin: 0; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 .card-hover { transition: all 0.25s ease; }
 .card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,50,120,0.12); }
+   .header-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.header-bg::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 60px;
+  width: 180px;
+  height: 180px;
+
+  background-image: url('logo-sirasa.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  opacity: 0.06;
+  filter: grayscale(100%) brightness(200%);
+  mix-blend-mode: soft-light;
+
+  transform: translateY(-50%);
+  pointer-events: none;
+}
 </style>
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="bg-slate-50">
   <div id="app" class="w-full overflow-auto"><!-- HEADER -->
-   <header id="site-header" class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 text-white shadow-lg">
+   <header id="site-header" class="header-bg bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 text-white shadow-lg">
     <div class="max-w-7xl mx-auto px-4 py-5 sm:px-6 lg:px-8">
      <div class="flex items-center gap-4">
-      <div class="flex-shrink-0 w-14 h-14 bg-white/15 rounded-xl flex items-center justify-center backdrop-blur">
+      <img src="logo-kabupaten.png" 
+     class="w-14 h-14 object-contain bg-white/10 p-2 rounded-xl backdrop-blur" />
        <svg width="32" height="32" viewbox="0 0 32 32" fill="none"><rect x="4" y="6" width="24" height="20" rx="3" stroke="white" stroke-width="2" /> <path d="M4 12h24" stroke="white" stroke-width="2" /> <circle cx="16" cy="20" r="3" stroke="white" stroke-width="2" /> <path d="M13 20l3-3 3 3" stroke="white" stroke-width="1.5" fill="none" />
        </svg>
       </div>
