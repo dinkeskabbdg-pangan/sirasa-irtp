@@ -611,6 +611,10 @@ async function initChart() {
   const jumlah = data.map(d => Number(d["Jumlah"]));
 
   const ctx = document.getElementById('yearlyChart').getContext('2d');
+   const canvas = document.getElementById('yearlyChart');
+if (!canvas) return;
+
+const ctx = canvas.getContext('2d');
    Chart.register(ChartDataLabels);
 
   new Chart(ctx, {
