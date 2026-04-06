@@ -603,57 +603,50 @@ if (regList) {
 // ---- CHART ----
 async function initChart() {
   try {
+    const canvas = document.getElementById('yearlyChart');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+
+    Chart.register(ChartDataLabels);
+
     const res = await fetch("https://opensheet.elk.sh/1DgBTzvUkEH2Vjbw1VCODnUzwHN0E_S0yaqTkDnfb5YI/SaranaIRTP");
     const data = await res.json();
 
-  const labels = data.map(d => d["Tahun"]);
-  const diawasi = data.map(d => Number(d["Diawasi"]));
-  const jumlah = data.map(d => Number(d["Jumlah"]));
+    if (!data || data.length === 0) {
+      console.log("Data kosong");
+      return;
+    }
 
-   const canvas = document.getElementById('yearlyChart');
-if (!canvas) return;
+    const labels = data.map(d => d["Tahun"]);
+    const diawasi = data.map(d => Number(d["Diawasi"]));
+    const jumlah = data.map(d => Number(d["Jumlah"]));
 
-const ctx = canvas.getContext('2d');
-   Chart.register(ChartDataLabels);
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Sarana yang Telah dilakukan Pengawasan Pemenuhan Komitmen SPPIRT',
-          data: diawasi,
-          backgroundColor: '#16a34a'
-        },
-        {
-          label: 'Jumlah Sarana IRTP',
-          data: jumlah,
-          backgroundColor: '#dc2626'
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        datalabels: {
-          anchor: 'end',
-          align: 'top',
-          color: '#000',
-          font: {
-            weight: 'bold'
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Sarana diawasi',
+            data: diawasi,
+            backgroundColor: '#16a34a'
           },
-          formatter: function(value) {
-            return value;
+          {
+            label: 'Jumlah IRTP',
+            data: jumlah,
+            backgroundColor: '#dc2626'
           }
-        }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
       }
-    },
-    plugins: [ChartDataLabels]
-  });
-     } catch (e) {
-    console.error("Chart gagal load", e);
+    });
+
+  } catch (error) {
+    console.error("ERROR CHART:", error);
   }
 }
 
