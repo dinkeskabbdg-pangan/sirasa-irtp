@@ -610,7 +610,6 @@ async function initChart() {
   const diawasi = data.map(d => Number(d["Diawasi"]));
   const jumlah = data.map(d => Number(d["Jumlah"]));
 
-  const ctx = document.getElementById('yearlyChart').getContext('2d');
    const canvas = document.getElementById('yearlyChart');
 if (!canvas) return;
 
