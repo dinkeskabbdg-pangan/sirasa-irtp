@@ -613,6 +613,7 @@ async function initChart() {
   const jumlah = data.map(d => Number(d["Jumlah"]));
 
   const ctx = document.getElementById('yearlyChart').getContext('2d');
+   Chart.register(ChartDataLabels);
 
   new Chart(ctx, {
     type: 'bar',
