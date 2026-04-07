@@ -680,7 +680,9 @@ async function onConfigChange(config) {
   document.getElementById('main-title').textContent = c.main_title;
   document.getElementById('subtitle-text').textContent = c.subtitle_text;
   const header = document.getElementById('site-header');
-  header.style.background = `linear-gradient(to right, ${c.background_color}, ${adjustBrightness(c.background_color, 20)})`;
+  header.style.background = "linear-gradient(to right, " 
+  + c.background_color + ", " 
+  + adjustBrightness(c.background_color, 20) + ")";
   document.querySelectorAll('.font-target').forEach(el => { el.style.fontFamily = c.font_family + ', sans-serif'; });
 }
 
