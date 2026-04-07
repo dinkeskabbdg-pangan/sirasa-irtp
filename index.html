@@ -848,11 +848,29 @@ const values = entries.map(e => e[1]);
           ]
         }]
       },
-      options: {
-        plugins: {
-          legend: { position: 'bottom' }
+     options: {
+  plugins: {
+    legend: {
+      position: 'bottom',
+      labels: {
+        boxWidth: 12,
+        padding: 15,
+        generateLabels: function(chart) {
+          const original = Chart.overrides.pie.plugins.legend.labels.generateLabels;
+          const labelsOriginal = original.call(this, chart);
+
+          labelsOriginal.forEach(label => {
+            if (label.text.length > 40) {
+              label.text = label.text.match(/.{1,40}/g).join('\n');
+            }
+          });
+
+          return labelsOriginal;
         }
       }
+    }
+  }
+}
     });
 
   } catch (err) {
