@@ -589,25 +589,28 @@ const regulasiData = [
    
 const regList = document.getElementById('regulasi-list');
 
+const regList = document.getElementById('regulasi-list');
+
 if (regList) {
-regulasiData.forEach(r => {
-  regList.insertAdjacentHTML('beforeend', `
-    <a href="#" onclick="openPDF('${r.url}')" class="block bg-white rounded-xl border border-slate-100 shadow-sm p-4 card-hover hover:border-blue-200 transition group">
-      <div class="flex items-center gap-4">
-        <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
-          <i data-lucide="${r.icon}" style="width:20px;height:20px;color:#b45309;"></i>
+  regulasiData.forEach(r => {
+    regList.insertAdjacentHTML('beforeend', `
+      <a href="#" onclick="openPDF('${r.url}')" class="block bg-white rounded-xl border border-slate-100 shadow-sm p-4 card-hover hover:border-blue-200 transition group">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="${r.icon}" style="width:20px;height:20px;color:#b45309;"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-600 text-slate-800 group-hover:text-blue-800 transition truncate">${r.judul}</p>
+            <p class="text-xs text-slate-400 mt-0.5">${r.keterangan}</p>
+          </div>
+          <div class="flex-shrink-0 text-slate-300 group-hover:text-blue-600 transition">
+            <i data-lucide="eye" style="width:20px;height:20px;"></i>
+          </div>
         </div>
-        <div class="flex-1 min-w-0">
-          <p class="text-sm font-600 text-slate-800 group-hover:text-blue-800 transition truncate">${r.judul}</p>
-          <p class="text-xs text-slate-400 mt-0.5">${r.keterangan}</p>
-        </div>
-        <div class="flex-shrink-0 text-slate-300 group-hover:text-blue-600 transition">
-          <i data-lucide="eye" style="width:20px;height:20px;"></i>
-        </div>
-      </div>
-    </a>
-  `);
-});
+      </a>
+    `);
+  });
+}
 
 // ---- CHART ----
 async function initChart() {
