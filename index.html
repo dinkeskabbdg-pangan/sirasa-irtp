@@ -87,58 +87,44 @@ html, body { height: 100%; margin: 0; }
    </nav><!-- PAGE: DASHBOARD -->
    <div id="page-dashboard" class="page active fade-in">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6"><!-- Stats Cards -->
-     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-      <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 card-hover">
-       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
-         <i data-lucide="building-2" style="width:20px;height:20px;color:#1e40af;"></i>
-        </div>
-        <div>
-         <p class="text-xs text-slate-500 font-500">Total IRTP</p>
-         <p class="text-xl font-800 text-slate-800">1.247</p>
-        </div>
-       </div>
-      </div>
-      <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 card-hover">
-       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
-         <i data-lucide="check-circle" style="width:20px;height:20px;color:#047857;"></i>
-        </div>
-        <div>
-         <p class="text-xs text-slate-500 font-500">Memenuhi</p>
-         <p class="text-xl font-800 text-emerald-700">934</p>
-        </div>
-       </div>
-      </div>
-      <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 card-hover">
-       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center">
-         <i data-lucide="x-circle" style="width:20px;height:20px;color:#b91c1c;"></i>
-        </div>
-        <div>
-         <p class="text-xs text-slate-500 font-500">Tidak Memenuhi</p>
-         <p class="text-xl font-800 text-red-700">313</p>
-        </div>
-       </div>
-      </div>
-      <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 card-hover">
-       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center">
-         <i data-lucide="clock" style="width:20px;height:20px;color:#b45309;"></i>
-        </div>
-        <div>
-         <p class="text-xs text-slate-500 font-500">Puskesmas</p>
-         <p class="text-xl font-800 text-slate-800">18</p>
-        </div>
-       </div>
-      </div>
-     </div><!-- Chart -->
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+
+  <!-- Total IRTP -->
+  <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100">
+    <p class="text-xs text-slate-500">Total IRTP</p>
+    <p id="total-irtp" class="text-2xl font-800 text-blue-700 mt-1">0</p>
+  </div>
+
+  <!-- Total PIRT -->
+  <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100">
+    <p class="text-xs text-slate-500">Total PIRT</p>
+    <p id="total-pirt" class="text-2xl font-800 text-emerald-600 mt-1">0</p>
+  </div>
+
+  <!-- Temuan terbanyak -->
+  <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100">
+    <p class="text-xs text-slate-500">Temuan Terbanyak</p>
+    <p id="top-temuan" class="text-sm font-700 text-red-600 mt-1">-</p>
+  </div>
+
+</div>
+
+     <!-- Chart -->
      <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5 mb-6">
       <h2 class="text-base font-700 text-slate-800 mb-1">Tren Capaian Hasil Pengawasan IRTP</h2>
       <div style="position:relative; height:300px;">
        <canvas id="yearlyChart"></canvas>
       </div>
-     </div><!-- Action Buttons -->
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5 mb-6">
+  <h2 class="text-base font-700 text-slate-800 mb-3">
+    Distribusi Temuan IRTP
+  </h2>
+  <div style="position:relative; height:300px;">
+    <canvas id="temuanChart"></canvas>
+  </div>
+</div>
+     <!-- Action Buttons -->
      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"><button onclick="navigateTo('form')" class="card-hover bg-gradient-to-br from-blue-700 to-blue-800 text-white rounded-xl p-5 text-left shadow-md hover:shadow-lg transition group">
        <div class="w-11 h-11 bg-white/15 rounded-lg flex items-center justify-center mb-3">
         <i data-lucide="clipboard-edit" style="width:22px;height:22px;"></i>
@@ -709,8 +695,107 @@ function adjustBrightness(hex, pct) {
   + b.toString(16).padStart(2,'0');
 }
 
+async function loadDashboardData() {
+  try {
+
+    // =========================
+    // 1. TOTAL IRTP & PIRT (SaranaIRTP)
+    // =========================
+    const res = await fetch("https://opensheet.elk.sh/1DgBTzvUkEH2Vjbw1VCODnUzwHN0E_S0yaqTkDnfb5YI/SaranaIRTP");
+    const data = await res.json();
+
+    let totalIRTP = 0;
+    let totalPIRT = 0;
+
+    data.forEach(r => {
+      totalIRTP += Number(r["IRTP"] || 0);
+      totalPIRT += Number(r["PIRT"] || 0);
+    });
+
+    document.getElementById("total-irtp").textContent =
+      totalIRTP.toLocaleString("id-ID");
+
+    document.getElementById("total-pirt").textContent =
+      totalPIRT.toLocaleString("id-ID");
+
+
+    // =========================
+    // 2. DATA TEMUAN
+    // =========================
+    const resTemuan = await fetch("https://opensheet.elk.sh/1DgBTzvUkEH2Vjbw1VCODnUzwHN0E_S0yaqTkDnfb5YI/Form%20Responses%201");
+    const dataTemuan = await resTemuan.json();
+
+    const counts = {};
+
+    dataTemuan.forEach(row => {
+      const raw = row["ketentuan hasil temuan"];
+      if (!raw) return;
+
+      const items = raw.split(",");
+
+      items.forEach(t => {
+        const key = t.trim();
+        if (!key) return;
+        counts[key] = (counts[key] || 0) + 1;
+      });
+    });
+
+    const labels = Object.keys(counts);
+    const values = Object.values(counts);
+
+
+    // =========================
+    // 3. TEMUAN TERBANYAK
+    // =========================
+    let top = "-";
+    let max = 0;
+
+    labels.forEach((l, i) => {
+      if (values[i] > max) {
+        max = values[i];
+        top = l;
+      }
+    });
+
+    document.getElementById("top-temuan").textContent = top;
+
+
+    // =========================
+    // 4. PIE CHART
+    // =========================
+    const ctx = document.getElementById('temuanChart').getContext('2d');
+
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: values,
+          backgroundColor: [
+            '#2563eb',
+            '#16a34a',
+            '#dc2626',
+            '#f59e0b',
+            '#7c3aed',
+            '#0ea5e9'
+          ]
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+
+  } catch (err) {
+    console.error("ERROR DASHBOARD:", err);
+  }
+}
+   
 document.addEventListener('DOMContentLoaded', () => {
   initChart();
+  loadDashboardData();
   lucide.createIcons();
 });
 </script>
