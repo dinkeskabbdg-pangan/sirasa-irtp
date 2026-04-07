@@ -208,30 +208,40 @@ html, body { height: 100%; margin: 0; }
      </div>
     </div>
    <!-- PAGE: DATA PENGAWASAN -->
-   <div id="page-data" class="page fade-in">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-     <h2 class="text-lg font-800 text-slate-800 mb-1">Data Pengawasan Per Kecamatan</h2>
-     <input 
-  type="text" 
-  id="search-kecamatan"
-  placeholder="Cari kecamatan atau puskesmas..."
-  class="w-full mb-4 px-4 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-/>
-     <p class="text-xs text-slate-400 mb-6">Klik nama Kecamatan untuk melihat data lengkap di spreadsheet</p>
-     <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+<div id="page-data" class="page fade-in">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <h2 class="text-lg font-800 text-slate-800 mb-1">
+      Data Pengawasan Per Kecamatan
+    </h2>
+
+    <input 
+      type="text" 
+      id="search-kecamatan"
+      placeholder="Cari kecamatan atau puskesmas..."
+      class="w-full mb-4 px-4 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+
+    <p class="text-xs text-slate-400 mb-6">
+      Klik nama Kecamatan untuk melihat data lengkap di spreadsheet
+    </p>
+
+    <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
       <table class="w-full text-sm">
-       <thead class="bg-blue-800 text-white">
-  <tr>
-    <th class="text-left px-4 py-3 font-600 text-xs">No</th>
-    <th class="text-left px-4 py-3 font-600 text-xs">Kecamatan</th>
-    <th class="text-left px-4 py-3 font-600 text-xs">Puskesmas</th>
-    <th class="text-center px-4 py-3 font-600 text-xs">Aksi</th>
-  </tr>
-</thead>
-<tbody id="kecamatan-table"></tbody>
+        <thead class="bg-blue-800 text-white">
+          <tr>
+            <th class="text-left px-4 py-3 text-xs">No</th>
+            <th class="text-left px-4 py-3 text-xs">Kecamatan</th>
+            <th class="text-left px-4 py-3 text-xs">Puskesmas</th>
+            <th class="text-center px-4 py-3 text-xs">Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="kecamatan-table"></tbody>
       </table>
-     </div>
     </div>
+
+  </div>
+</div>
    
     <!-- PAGE: REGULASI -->
    <div id="page-regulasi" class="page fade-in">
