@@ -866,24 +866,26 @@ function wrapText(str, maxLen) {
      options: {
   plugins: {
     legend: {
-  position: 'right',
-  maxWidth: 250,
-  labels: {
-    boxWidth: 12,
-    padding: 15,
-    usePointStyle: true,
-    font: {
-      size: 11
-    },
-    generateLabels: function(chart) {
-      const original = Chart.overrides.pie.plugins.legend.labels.generateLabels;
-      const labelsOriginal = original.call(this, chart);
+      position: 'right',
+      maxWidth: 250,
+      labels: {
+        boxWidth: 12,
+        padding: 15,
+        usePointStyle: true,
+        font: {
+          size: 11
+        },
+        generateLabels: function(chart) {
+          const original = Chart.overrides.pie.plugins.legend.labels.generateLabels;
+          const labelsOriginal = original.call(this, chart);
 
-      labelsOriginal.forEach(label => {
-        label.text = wrapText(label.text, 25);
-      });
+          labelsOriginal.forEach(label => {
+            label.text = wrapText(label.text, 25);
+          });
 
-      return labelsOriginal;
+          return labelsOriginal;
+        }
+      }
     }
   }
 }
