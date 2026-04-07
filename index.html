@@ -109,20 +109,28 @@ html, body { height: 100%; margin: 0; }
 
 </div>
 
-     <!-- Chart -->
-     <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5 mb-6">
-      <h2 class="text-base font-700 text-slate-800 mb-1">Tren Capaian Hasil Pengawasan IRTP</h2>
-      <div style="position:relative; height:300px;">
-       <canvas id="yearlyChart"></canvas>
-      </div>
-      </div>
-      <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5 mb-6">
-  <h2 class="text-base font-700 text-slate-800 mb-3">
-    Distribusi Temuan IRTP
-  </h2>
-  <div style="position:relative; height:300px;">
-    <canvas id="temuanChart"></canvas>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+
+  <!-- Chart Tren -->
+  <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5">
+    <h2 class="text-base font-700 text-slate-800 mb-1">
+      Tren Capaian Hasil Pengawasan IRTP
+    </h2>
+    <div style="position:relative; height:300px;">
+      <canvas id="yearlyChart"></canvas>
+    </div>
   </div>
+
+  <!-- Pie Chart -->
+  <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-5">
+    <h2 class="text-base font-700 text-slate-800 mb-3">
+      Distribusi Temuan IRTP
+    </h2>
+    <div style="position:relative; height:300px;">
+      <canvas id="temuanChart"></canvas>
+    </div>
+  </div>
+
 </div>
      <!-- Action Buttons -->
      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"><button onclick="navigateTo('form')" class="card-hover bg-gradient-to-br from-blue-700 to-blue-800 text-white rounded-xl p-5 text-left shadow-md hover:shadow-lg transition group">
