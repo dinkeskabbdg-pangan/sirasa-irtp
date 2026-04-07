@@ -740,8 +740,30 @@ async function loadDashboardData() {
       });
     });
 
-    const labels = Object.keys(counts);
-    const values = Object.values(counts);
+    // =========================
+// FILTER + TOP 5
+// =========================
+
+// ubah object jadi array
+let entries = Object.entries(counts);
+
+// ❌ buang "tidak ada temuan"
+entries = entries.filter(([key]) => 
+  key.toLowerCase() !== "tidak ada temuan"
+);
+
+// 🔽 urutkan dari terbesar
+entries.sort((a, b) => b[1] - a[1]);
+
+// ambil top 5
+entries = entries.slice(0, 5);
+
+// pisahkan lagi
+const labels = entries.map(e => 
+  e[0].replace(/\b\w/g, c => c.toUpperCase())
+);
+
+const values = entries.map(e => e[1]);
 
 
     // =========================
