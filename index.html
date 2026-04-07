@@ -691,7 +691,10 @@ function adjustBrightness(hex, pct) {
   r = Math.min(255, r + Math.round(r * pct / 100));
   g = Math.min(255, g + Math.round(g * pct / 100));
   b = Math.min(255, b + Math.round(b * pct / 100));
-  return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
+  return "#" 
+  + r.toString(16).padStart(2,'0')
+  + g.toString(16).padStart(2,'0')
+  + b.toString(16).padStart(2,'0');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
