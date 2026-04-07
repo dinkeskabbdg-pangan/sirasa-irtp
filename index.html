@@ -734,18 +734,55 @@ async function loadDashboardData() {
     const dataTemuan = await resTemuan.json();
 
     const counts = {};
-
+const kategoriList = [
+  "Lokasi dan lingkungan tidak terawat, kotor dan berdebu",
+  "Ruang produksi sempit, sukar dibersihkan dan digunakan untuk selain pangan",
+  "Lantai, dinding, dan langit-langit tidak terawat, kotor, berdebu atau berlendir",
+  "Ventilasi, pintu, dan jendela tidak terawat, kotor dan berdebu",
+  "Permukaan yang kontak langsung dengan pangan berkarat dan kotor",
+  "Peralatan tidak dipelihara, kotor dan tidak menjamin sanitasi",
+  "Alat ukur/timbangan tidak tersedia atau tidak teliti",
+  "Air bersih tidak tersedia dalam jumlah cukup",
+  "Air berasal dari sumber yang tidak bersih",
+  "Sarana pencucian bahan pangan/peralatan tidak tersedia atau tidak terawat",
+  "Tidak tersedia sarana cuci tangan lengkap",
+  "Toilet/jamban kotor, tidak terawat dan terbuka ke ruang produksi",
+  "Tidak tersedia tempat pembuangan sampah tertutup",
+  "Karyawan tidak menjaga kebersihan diri atau dalam keadaan sakit",
+  "Karyawan tidak mengenakan pakaian kerja atau memakai perhiasan",
+  "Karyawan tidak mencuci tangan dengan benar",
+  "Karyawan berperilaku tidak baik (makan/minum saat produksi)",
+  "Tidak ada penanggung jawab higiene karyawan",
+  "Bahan kimia tidak digunakan/disimpan sesuai prosedur",
+  "Program higiene dan sanitasi tidak dilakukan secara berkala",
+  "Hewan berkeliaran di area produksi",
+  "Sampah tidak segera dibuang",
+  "Penyimpanan bahan dan produk tidak sesuai (kotor/lembab/gelap)",
+  "Peralatan bersih disimpan di tempat kotor",
+  "Menggunakan bahan baku rusak/berbahaya atau tidak sesuai",
+  "Tidak memiliki atau tidak mengikuti bagan alir produksi",
+  "Tidak menggunakan kemasan khusus pangan",
+  "BTP tidak diberi penandaan dengan benar",
+  "Timbangan untuk BTP tidak tersedia atau tidak teliti",
+  "Label pangan tidak lengkap (nama, komposisi, berat, dll)",
+  "Label mencantumkan klaim kesehatan/gizi yang tidak sesuai",
+  "Tidak memiliki penanggung jawab bersertifikat PKP",
+  "Tidak melakukan pengawasan internal secara rutin",
+  "Tidak melakukan penarikan produk yang tidak aman",
+  "Tidak memiliki dokumen produksi",
+  "Dokumen tidak mutakhir, tidak akurat atau tidak tersimpan dengan baik",
+  "Tidak memiliki program pelatihan keamanan pangan"
+];
+   
     dataTemuan.forEach(row => {
       const raw = row["Ketentuan Hasil Temuan"];
       if (!raw) return;
 
-      const items = raw.split(",");
-
-      items.forEach(t => {
-        const key = t.trim();
-        if (!key) return;
-        counts[key] = (counts[key] || 0) + 1;
-      });
+      kategoriList.forEach(kat => {
+  if (raw.toLowerCase().includes(kat.toLowerCase())) {
+    counts[kat] = (counts[kat] || 0) + 1;
+  }
+});
     });
 
     // =========================
